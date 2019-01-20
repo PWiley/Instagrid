@@ -114,6 +114,11 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="WZF-Vq-KC6"/>
+                                        <exclude reference="WfT-4v-Pie"/>
+                                        <exclude reference="bPE-HV-J0j"/>
+                                        <exclude reference="fDE-c5-v6p"/>
+                                        <exclude reference="tzi-bH-J6Z"/>
                                         <exclude reference="DQn-Ia-QqT"/>
                                         <exclude reference="mdT-sf-QrB"/>
                                         <exclude reference="4qI-Gu-1Sq"/>
@@ -123,15 +128,18 @@
                                         <exclude reference="sRm-pS-Jmq"/>
                                         <exclude reference="tY5-LH-BWj"/>
                                         <exclude reference="ugw-aB-ELz"/>
-                                        <exclude reference="WZF-Vq-KC6"/>
-                                        <exclude reference="WfT-4v-Pie"/>
-                                        <exclude reference="bPE-HV-J0j"/>
-                                        <exclude reference="fDE-c5-v6p"/>
-                                        <exclude reference="tzi-bH-J6Z"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
                                     <mask key="constraints">
+                                        <exclude reference="4Ck-89-thG"/>
+                                        <exclude reference="Mr4-hd-kUZ"/>
+                                        <exclude reference="WZF-Vq-KC6"/>
+                                        <include reference="WfT-4v-Pie"/>
+                                        <exclude reference="ayO-TZ-Hzr"/>
+                                        <exclude reference="bPE-HV-J0j"/>
+                                        <exclude reference="fDE-c5-v6p"/>
+                                        <include reference="tzi-bH-J6Z"/>
                                         <exclude reference="DQn-Ia-QqT"/>
                                         <exclude reference="d8O-du-COk"/>
                                         <include reference="mdT-sf-QrB"/>
@@ -146,14 +154,6 @@
                                         <exclude reference="tY5-LH-BWj"/>
                                         <include reference="ugw-aB-ELz"/>
                                         <exclude reference="ysb-s1-x0R"/>
-                                        <exclude reference="4Ck-89-thG"/>
-                                        <exclude reference="Mr4-hd-kUZ"/>
-                                        <exclude reference="WZF-Vq-KC6"/>
-                                        <include reference="WfT-4v-Pie"/>
-                                        <exclude reference="ayO-TZ-Hzr"/>
-                                        <exclude reference="bPE-HV-J0j"/>
-                                        <exclude reference="fDE-c5-v6p"/>
-                                        <include reference="tzi-bH-J6Z"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -222,29 +222,6 @@
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
                                 <rect key="frame" x="40.5" y="468.5" width="239" height="67.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxq-jv-Isg" userLabel="Button View Large Two">
-                                        <rect key="frame" x="0.0" y="0.0" width="66.5" height="67.5"/>
-                                        <state key="normal" image="Selected" backgroundImage="Layout 1"/>
-                                        <connections>
-                                            <action selector="showViewLargeTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsY-Ry-J9q"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cu-hg-aH7" userLabel="Button View Two Large">
-                                        <rect key="frame" x="86.5" y="0.0" width="66" height="67.5"/>
-                                        <state key="normal" image="Selected" backgroundImage="Layout 2"/>
-                                        <connections>
-                                            <action selector="showViewTwoLarge:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f1K-V0-PhK"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yv1-oq-nuS" userLabel="Button View Two Two">
-                                        <rect key="frame" x="172.5" y="0.0" width="66.5" height="67.5"/>
-                                        <state key="normal" image="Selected" backgroundImage="Layout 3"/>
-                                        <connections>
-                                            <action selector="showViewTwoTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vI2-y5-xdM"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="UqG-W6-1pZ"/>
@@ -408,13 +385,12 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="buttonViewLargeTwo" destination="Wxq-jv-Isg" id="aoS-6J-5S1"/>
-                        <outlet property="buttonViewTwoLarge" destination="3Cu-hg-aH7" id="XkP-ic-pnR"/>
-                        <outlet property="buttonViewTwoTwo" destination="Yv1-oq-nuS" id="eGU-xa-7tj"/>
                         <outlet property="imageArrow" destination="pxT-1t-Uk3" id="joC-zm-SF3"/>
                         <outlet property="shareChoice" destination="8zh-d4-pQk" id="38x-b1-yvb"/>
                         <outlet property="stackViewBottom" destination="Tqo-mm-kfh" id="Vfn-bu-Csg"/>
+                        <outlet property="stackViewButtons" destination="nKK-Qc-kJx" id="eQK-wD-qqF"/>
                         <outlet property="stackViewTop" destination="j9o-3o-qHL" id="3d1-Ys-yvN"/>
+                        <outlet property="viewGeneral" destination="2s5-uZ-KTM" id="9Y0-qc-IeD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -425,10 +401,6 @@
     <resources>
         <image name="Arrow Up" width="15" height="10"/>
         <image name="Instagrid" width="123" height="35"/>
-        <image name="Layout 1" width="80" height="80"/>
-        <image name="Layout 2" width="80" height="80"/>
-        <image name="Layout 3" width="80" height="80"/>
-        <image name="Selected" width="80" height="80"/>
         <image name="Swipe up to share" width="159" height="22"/>
     </resources>
 </document>
