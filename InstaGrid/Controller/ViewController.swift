@@ -17,21 +17,13 @@ UINavigationControllerDelegate {
     @IBOutlet weak var stackViewTop: UIStackView!
     @IBOutlet weak var stackViewBottom: UIStackView!
     
+    @IBOutlet weak var stackViewButtons: UIStackView!
     
-    @IBOutlet weak var buttonViewLargeTwo: UIButton!
-    
-    
-    @IBOutlet weak var buttonViewTwoLarge: UIButton!
-    
-    
-    @IBOutlet weak var buttonViewTwoTwo: UIButton!
-    
-    
-    
-    
-    let picker = UIImagePickerController()
+    @IBOutlet weak var viewGeneral: UIView!
     
     var buttonsArray = [UIButton]()
+    var viewButtonsArray = [UIButton]()
+    
     var currentTag: Int = 0
     
     override func viewDidLoad() {
@@ -39,72 +31,96 @@ UINavigationControllerDelegate {
         
         
         super.viewDidLoad()
-        
-        picker.delegate = self
+//        let picker = UIImagePickerController()
+//        picker.delegate = self
         
         createButtons() // creates the four buttons so they can by added later in the two different stackView
         // stackViewTop will contain maximum two
         // stackViewBottom will contain maximum two
         // it will depend on the type of the frame shown
+        setViewTwoLarge()
         
-        
-        buttonViewLargeTwo.imageView!.isHidden = true // displays the buttonViewLargeTwo checked image
-        buttonViewTwoTwo.imageView!.isHidden = true // displays the buttonViewLargeTwo checked image
-        buttonViewTwoLarge.imageView!.isHidden = false // displays the buttonViewLargeTwo checked image
+//        buttonViewLargeTwo.imageView!.isHidden = true // displays the buttonViewLargeTwo checked image
+//        buttonViewTwoTwo.imageView!.isHidden = true // displays the buttonViewLargeTwo checked image
+//        buttonViewTwoLarge.imageView!.isHidden = false // displays the buttonViewLargeTwo checked image
         stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
         stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
         stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
         
         
         
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
+        if UIDevice.current.orientation.isLandscape { // test if the iphone is in landscape then gesture taking in charge will be the left one
+            gesture.direction = .left
+            print("left")
+        }
+        else { // or gesture up taken in charge
+            gesture.direction = .up
+            print("up")
+        }
+        
+        self.viewGeneral.addGestureRecognizer(gesture)
     }
     //Mark: - Display
     
-    @IBAction func showViewLargeTwo(_ sender: Any) {
+    @IBAction func buttonViewPressed(_ sender: UIButton!) {
         
-        resetStackView() // call resetStackView method
-        buttonViewLargeTwo.imageView!.isHidden = false // displays the buttonViewLargeTwo checked image
-        buttonViewTwoLarge.imageView!.isHidden = true // hiddes the buttonViewTwoLarge checked image
-        buttonViewTwoTwo.imageView!.isHidden = true // hiddes the buttonViewTwoTwo checked image
-        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-        stackViewBottom.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewBottom in position three
-        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position four
-    }
+        
+        
+        if sender.tag == 0 {
+            print("sender egale 0")
+            resetStackView() // call resetStackView method
+            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+            stackViewBottom.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewBottom in position three
+            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position four
+            setViewLargeTwo()
+        }
+        if sender.tag == 1 {
+            print("sender egale 1")
+            resetStackView() // call resetStackView method
+            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+            stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
+            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewTop in position Three
+            setViewTwoLarge()
+            
+        }
+        if sender.tag == 2 {
+            print("sender egale 2")
+            resetStackView() // call resetStackView method
+            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+            stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position One
+            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
+            stackViewBottom.addArrangedSubview(buttonsArray[3]) // adds the button to the stackViewBottom in position Four
+            setViewTwoTwo()
+            
+           
+        }
+       }
     
-    @IBAction func showViewTwoLarge(_ sender: Any) { // displays the view ViewTwoLarge
-        
-        resetStackView() // call resetStackView method
-        buttonViewLargeTwo.imageView!.isHidden = true // hiddes the buttonViewLargeTwo checked image
-        buttonViewTwoLarge.imageView!.isHidden = false // displays the buttonViewTwoLarge checked image
-        buttonViewTwoTwo.imageView!.isHidden = true // hiddes the buttonViewTwoTwo checked image
-        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
-        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewTop in position Three
-    }
+
     
-    @IBAction func showViewTwoTwo(_ sender: Any) {
-        
-        resetStackView() // call resetStackView method
-        buttonViewLargeTwo.imageView!.isHidden = true // hiddes the buttonViewLargeTwo checked image
-        buttonViewTwoLarge.imageView!.isHidden = true // hiddes the buttonViewTwoLarge checked image
-        buttonViewTwoTwo.imageView!.isHidden = false // displays the buttonViewTwoTwo checked image
-        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position One
-        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
-        stackViewBottom.addArrangedSubview(buttonsArray[3]) // adds the button to the stackViewBottom in position Four
-    }
+
     
     //Mark: - Actions
     
     @objc func buttonAddImagePressed(sender: UIButton!) { // add image in position 1
         
+        let picker = UIImagePickerController()
+        picker.delegate = self
         picker.allowsEditing = false // allows not the editing access to the picker
         picker.sourceType = .photoLibrary // declares the type of the source
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        picker.modalPresentationStyle = UIModalPresentationStyle.currentContext // allows the landscape view
         present(picker, animated: true, completion: nil)
         
-        if sender.tag == 1 {
+        if sender.tag == 0 {
             currentTag = sender.tag // sets currentTag to the sender.tag
+        }
+        if sender.tag == 1 {
+            
+            currentTag = sender.tag
         }
         if sender.tag == 2 {
             
@@ -113,15 +129,14 @@ UINavigationControllerDelegate {
         if sender.tag == 3 {
             
             currentTag = sender.tag
-        }
-        if sender.tag == 4 {
-            
-            currentTag = sender.tag
             
         }
     }
     
-    
+    @objc func shareFrame() {
+        let activityViewController = UIActivityViewController(activityItems: [viewGeneral.asImage()], applicationActivities:nil)
+        present(activityViewController, animated: true,completion: nil)
+    }
     
     
     
@@ -167,7 +182,7 @@ UINavigationControllerDelegate {
         }
     }
     
-    func createButtons() { // creates four buttons from tag 1 - 4
+    func createButtons() { // creates four buttons from tag 0 - 3
         
         for tag in 0...3 {
             
@@ -184,6 +199,63 @@ UINavigationControllerDelegate {
             
         }
     }
+    func createViewButtons() { // creates four buttons from tag 1 - 3
+       
+        for tag in 0...2 {
+            
+            
+            let button = UIButton()
+            
+            button.imageView!.contentMode = .scaleToFill
+            //button.setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+            button.tag = tag
+            button.addTarget(self, action: #selector(buttonViewPressed), for: .touchUpInside)
+            viewButtonsArray.append(button)
+            print(button.tag)
+            
+            
+        }
+        viewButtonsArray[0].setBackgroundImage(#imageLiteral(resourceName: "Layout 1.png"), for: .normal)
+        viewButtonsArray[1].setBackgroundImage(#imageLiteral(resourceName: "Layout 2"), for: .normal)
+        viewButtonsArray[2].setBackgroundImage(#imageLiteral(resourceName: "Layout 3"), for: .normal)
+        
+        stackViewButtons.addArrangedSubview(viewButtonsArray[0])
+        stackViewButtons.addArrangedSubview(viewButtonsArray[1])
+        stackViewButtons.addArrangedSubview(viewButtonsArray[2])
+        
+       
+        
+    }
+    func setViewLargeTwo() {
+        createViewButtons()
+        viewButtonsArray[0].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+        viewButtonsArray[1].setImage(#imageLiteral(resourceName: "Layout 2"), for: .normal)
+        viewButtonsArray[2].setImage(#imageLiteral(resourceName: "Layout 3"), for: .normal)
+        
+    }
+    func setViewTwoLarge() {
+        createViewButtons()
+        viewButtonsArray[0].setImage(#imageLiteral(resourceName: "Layout 1"), for: .normal)
+        viewButtonsArray[1].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+        viewButtonsArray[2].setImage(#imageLiteral(resourceName: "Layout 3"), for: .normal)
+        
+        
+    }
+    func setViewTwoTwo() {
+        createViewButtons()
+        viewButtonsArray[0].setImage(#imageLiteral(resourceName: "Layout 1"), for: .normal)
+        viewButtonsArray[1].setImage(#imageLiteral(resourceName: "Layout 2"), for: .normal)
+        viewButtonsArray[2].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+    }
+}
+extension UIView {
     
-    
+    // Using a function since `var image` might conflict with an existing variable
+    // (like on `UIImageView`)
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
 }
