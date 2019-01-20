@@ -5,252 +5,156 @@
 //  Created by Patrick Wiley on 13.12.18.
 //  Copyright © 2018 PawilIOS. All rights reserved.
 //
-
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController,
+    UIImagePickerControllerDelegate,
+UINavigationControllerDelegate {
+    
     @IBOutlet weak var shareChoice: UIImageView!
     @IBOutlet weak var imageArrow: UIImageView!
     
     @IBOutlet weak var stackViewTop: UIStackView!
     @IBOutlet weak var stackViewBottom: UIStackView!
     
+    
     @IBOutlet weak var buttonViewLargeTwo: UIButton!
+    
+    
     @IBOutlet weak var buttonViewTwoLarge: UIButton!
+    
+    
     @IBOutlet weak var buttonViewTwoTwo: UIButton!
     
-    public var screenWidth: CGFloat = UIScreen.main.bounds.size.width
-    public var screenHeight: CGFloat = UIScreen.main.bounds.size.height
-    public var viewWidth: CGFloat = 0
-    public var viewHeight: CGFloat = 0
-    public var buttonWidth: CGFloat = 0
     
-    fileprivate var imagePicker = ImagePicker()
     
+    
+    let picker = UIImagePickerController()
+    
+    var buttonsArray = [UIButton]()
+    var currentTag: Int = 0
     
     override func viewDidLoad() {
         
         
         
         super.viewDidLoad()
-        imagePicker.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
-        buttonViewLargeTwo.imageView!.isHidden = true
-        buttonViewTwoTwo.imageView!.isHidden = true
-        buttonViewTwoLarge.imageView!.isHidden = false
         
-        viewWidth = (screenWidth * 80) / 375
-        viewHeight = (screenHeight * 80) / 667
-        buttonWidth = (screenWidth * 40) / 375
+        picker.delegate = self
+        
+        createButtons() // creates the four buttons so they can by added later in the two different stackView
+        // stackViewTop will contain maximum two
+        // stackViewBottom will contain maximum two
+        // it will depend on the type of the frame shown
         
         
-        print(viewWidth)
-        print(viewHeight)
+        buttonViewLargeTwo.imageView!.isHidden = true // displays the buttonViewLargeTwo checked image
+        buttonViewTwoTwo.imageView!.isHidden = true // displays the buttonViewLargeTwo checked image
+        buttonViewTwoLarge.imageView!.isHidden = false // displays the buttonViewLargeTwo checked image
+        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
+        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
         
-        let view1 = UIView()
-        let view2 = UIView()
-        let view3 = UIView()
-        let view4 = UIView()
-
-        view1.backgroundColor = .white
-        view2.backgroundColor = .white
-        view3.backgroundColor = .white
-        view4.backgroundColor = .white
         
+        
+    }
+    //Mark: - Display
     
-        
-        //print(UIScreen.main.bounds.size.width)
-        //print(UIScreen.main.bounds.size.height)
-       
-       
-        let buttonAdd1 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd1.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd1.addTarget(self, action: #selector(addImage1), for: .touchUpInside)
-        view1.addSubview(buttonAdd1)
-        
-        
-        let buttonAdd2 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd2.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd2.addTarget(self, action: #selector(addImage2), for: .touchUpInside)
-        view2.addSubview(buttonAdd2)
-
-        let buttonAdd3 = UIButton(frame: CGRect(x: (viewWidth * 115 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd3.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd3.addTarget(self, action: #selector(addImage3), for: .touchUpInside)
-        view3.addSubview(buttonAdd3)
-        
-//        stackViewTop.subviews.forEach { (item) in
-//            item.removeFromSuperview()
-//        }
-       
-        stackViewTop.addArrangedSubview(view1)
-        stackViewTop.addArrangedSubview(view2)
-        stackViewBottom.addArrangedSubview(view3)
-      
-
-
-        
-     
-        
-    }
-    fileprivate func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
-        imagePicker.controller.sourceType = sourceType
-        DispatchQueue.main.async {
-            self.present(self.imagePicker.controller, animated: true, completion: nil)
-        }
-    }
-    @objc func addImage1(sender: UIButton!) { // add image in position 1
-        print("Button 1 tapped")
-        
-        
-    }
-    @objc func addImage2(sender: UIButton!) { // add image in position 2
-        print("Button 2 tapped")
-    
-    }
-    @objc func addImage3(sender: UIButton!) { // add image in position 3
-        print("Button 3 tapped")
-        
-    }
-    @objc func addImage4(sender: UIButton!) { // add image in position 4
-        print("Button 4 tapped")
-        
-    }
-    
-
     @IBAction func showViewLargeTwo(_ sender: Any) {
         
-        print("button 1")
-        
         resetStackView() // call resetStackView method
-        
-       buttonViewLargeTwo.imageView!.isHidden = false
-       buttonViewTwoLarge.imageView!.isHidden = true
-       buttonViewTwoTwo.imageView!.isHidden = true
-        
-        let view1 = UIView()
-        let view2 = UIView()
-        let view3 = UIView()
-        let view4 = UIView()
-        
-        view1.backgroundColor = .white
-        view2.backgroundColor = .white
-        view3.backgroundColor = .white
-        view4.backgroundColor = .white
-        
-        let buttonAdd1 = UIButton(frame: CGRect(x: (viewWidth * 115 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd1.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd1.addTarget(self, action: #selector(addImage1), for: .touchUpInside)
-        view1.addSubview(buttonAdd1)
-        
-        let buttonAdd2 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd2.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd2.addTarget(self, action: #selector(addImage2), for: .touchUpInside)
-        view2.addSubview(buttonAdd2)
-        
-        let buttonAdd3 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd3.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd3.addTarget(self, action: #selector(addImage3), for: .touchUpInside)
-        view3.addSubview(buttonAdd3)
-        
-        
-        
-        stackViewTop.addArrangedSubview(view1)
-        stackViewBottom.addArrangedSubview(view2)
-        stackViewBottom.addArrangedSubview(view3)
-        
+        buttonViewLargeTwo.imageView!.isHidden = false // displays the buttonViewLargeTwo checked image
+        buttonViewTwoLarge.imageView!.isHidden = true // hiddes the buttonViewTwoLarge checked image
+        buttonViewTwoTwo.imageView!.isHidden = true // hiddes the buttonViewTwoTwo checked image
+        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+        stackViewBottom.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewBottom in position three
+        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position four
     }
     
-    @IBAction func showViewTwoLarge(_ sender: Any) {
+    @IBAction func showViewTwoLarge(_ sender: Any) { // displays the view ViewTwoLarge
         
-       resetStackView() // call resetStackView method
-        
-        print("button 2")
-        
-       buttonViewLargeTwo.imageView!.isHidden = true
-       buttonViewTwoLarge.imageView!.isHidden = false
-       buttonViewTwoTwo.imageView!.isHidden = true
-        
-        let view1 = UIView()
-        let view2 = UIView()
-        let view3 = UIView()
-        let view4 = UIView()
-        
-        view1.backgroundColor = .white
-        view2.backgroundColor = .white
-        view3.backgroundColor = .white
-        view4.backgroundColor = .white
-        
-        let buttonAdd1 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd1.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd1.addTarget(self, action: #selector(addImage1), for: .touchUpInside)
-        view1.addSubview(buttonAdd1)
-        
-        let buttonAdd2 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd2.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd2.addTarget(self, action: #selector(addImage2), for: .touchUpInside)
-        view2.addSubview(buttonAdd2)
-        
-        let buttonAdd3 = UIButton(frame: CGRect(x: (viewWidth * 115 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd3.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd3.addTarget(self, action: #selector(addImage3), for: .touchUpInside)
-        view3.addSubview(buttonAdd3)
-        
-        
-        
-        stackViewTop.addArrangedSubview(view1)
-        stackViewTop.addArrangedSubview(view2)
-        stackViewBottom.addArrangedSubview(view3)
+        resetStackView() // call resetStackView method
+        buttonViewLargeTwo.imageView!.isHidden = true // hiddes the buttonViewLargeTwo checked image
+        buttonViewTwoLarge.imageView!.isHidden = false // displays the buttonViewTwoLarge checked image
+        buttonViewTwoTwo.imageView!.isHidden = true // hiddes the buttonViewTwoTwo checked image
+        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
+        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewTop in position Three
     }
-   
+    
     @IBAction func showViewTwoTwo(_ sender: Any) {
         
         resetStackView() // call resetStackView method
+        buttonViewLargeTwo.imageView!.isHidden = true // hiddes the buttonViewLargeTwo checked image
+        buttonViewTwoLarge.imageView!.isHidden = true // hiddes the buttonViewTwoLarge checked image
+        buttonViewTwoTwo.imageView!.isHidden = false // displays the buttonViewTwoTwo checked image
+        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position One
+        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
+        stackViewBottom.addArrangedSubview(buttonsArray[3]) // adds the button to the stackViewBottom in position Four
+    }
+    
+    //Mark: - Actions
+    
+    @objc func buttonAddImagePressed(sender: UIButton!) { // add image in position 1
         
-        print("button 3")
+        picker.allowsEditing = false // allows not the editing access to the picker
+        picker.sourceType = .photoLibrary // declares the type of the source
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
         
-       buttonViewLargeTwo.imageView!.isHidden = true
-       buttonViewTwoLarge.imageView!.isHidden = true
-       buttonViewTwoTwo.imageView!.isHidden = false
+        if sender.tag == 1 {
+            currentTag = sender.tag // sets currentTag to the sender.tag
+        }
+        if sender.tag == 2 {
+            
+            currentTag = sender.tag
+        }
+        if sender.tag == 3 {
+            
+            currentTag = sender.tag
+        }
+        if sender.tag == 4 {
+            
+            currentTag = sender.tag
+            
+        }
+    }
+    
+    
+    
+    
+    
+    //MARK: - Delegates
+    @objc func imagePickerController(_ picker: UIImagePickerController,
+                                     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         
-        let view1 = UIView()
-        let view2 = UIView()
-        let view3 = UIView()
-        let view4 = UIView()
+        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            if currentTag == 0 {
+                buttonsArray[0].setImage(chosenImage, for: .normal)
+                
+            }
+            if currentTag == 1 {
+                buttonsArray[1].setImage(chosenImage, for: .normal)
+                
+            }
+            if currentTag == 2 {
+                buttonsArray[2].setImage(chosenImage, for: .normal)
+                
+            }
+            if currentTag == 3 {
+                buttonsArray[3].setImage(chosenImage, for: .normal)
+                
+            }
+            
+        }
         
-        view1.backgroundColor = .white
-        view2.backgroundColor = .white
-        view3.backgroundColor = .white
-        view4.backgroundColor = .white
+        dismiss(animated:true, completion: nil) //5
         
-        let buttonAdd1 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd1.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd1.addTarget(self, action: #selector(addImage1), for: .touchUpInside)
-        view1.addSubview(buttonAdd1)
         
-        let buttonAdd2 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd2.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd2.addTarget(self, action: #selector(addImage2), for: .touchUpInside)
-        view2.addSubview(buttonAdd2)
-        
-        let buttonAdd3 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd3.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd3.addTarget(self, action: #selector(addImage3), for: .touchUpInside)
-        view3.addSubview(buttonAdd3)
-        
-        let buttonAdd4 = UIButton(frame: CGRect(x: (viewWidth * 44 )/80, y: (viewHeight * 44)/80, width: buttonWidth, height: buttonWidth))
-        buttonAdd4.setImage(UIImage(named: "Combined Shape"), for: .normal)
-        buttonAdd4.addTarget(self, action: #selector(addImage4), for: .touchUpInside)
-        view4.addSubview(buttonAdd4)
-        
-        //print("le nombre de vues est de : \(stackViewTop.arrangedSubviews.count)")
-       
-        
-        stackViewTop.addArrangedSubview(view1)
-        stackViewTop.addArrangedSubview(view2)
-        stackViewBottom.addArrangedSubview(view3)
-        stackViewBottom.addArrangedSubview(view4)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func resetStackView() { // reset the stackView content to none
@@ -263,29 +167,23 @@ class ViewController: UIViewController {
         }
     }
     
-}
-    
-extension ViewController: ImagePickerDelegate {
-    
-    func imagePickerDelegate(didSelect image: UIImage, imageName:String, delegatedForm: ImagePicker) {
-        imageView.image = image
-        imagePicker.dismiss()
-    }
-    
-    func imagePickerDelegate(didCancel delegatedForm: ImagePicker) {
-        imagePicker.dismiss()
-    }
-    
-    func imagePickerDelegate(canUseGallery accessIsAllowed: Bool, delegatedForm: ImagePicker) {
-        if accessIsAllowed {
-            presentImagePicker(sourceType: .photoLibrary)
+    func createButtons() { // creates four buttons from tag 1 - 4
+        
+        for tag in 0...3 {
+            
+            
+            let button = UIButton()
+            
+            button.imageView!.contentMode = .scaleToFill
+            button.backgroundColor = .white
+            button.setImage(UIImage(named: "Combined Shape"), for: .normal)
+            button.tag = tag
+            button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
+            buttonsArray.append(button)
+            print(button.tag)
+            
         }
     }
     
-    func imagePickerDelegate(canUseCamera accessIsAllowed: Bool, delegatedForm: ImagePicker) {
-        if accessIsAllowed {
-            // works only on real device (crash on simulator)
-            presentImagePicker(sourceType: .camera)
-        }
-    }
+    
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="landscape">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,14 +14,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nR-Wz-yVj">
-                                <rect key="frame" x="8" y="6" width="238.5" height="168"/>
+                                <rect key="frame" x="93" y="28" width="134" height="114"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Instagrid" translatesAutoresizingMaskIntoConstraints="NO" id="sgk-IZ-Rk6">
-                                        <rect key="frame" x="211.5" y="0.0" width="119" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="sgk-IZ-Rk6" secondAttribute="height" multiplier="157:35" id="OPd-o8-8hF"/>
                                             <constraint firstAttribute="width" constant="119" id="TwS-RV-Xhv"/>
@@ -42,7 +42,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="pxT-1t-Uk3" userLabel="ArrowUp">
-                                        <rect key="frame" x="78" y="118" width="15" height="10"/>
+                                        <rect key="frame" x="59.5" y="63" width="15" height="10"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pxT-1t-Uk3" secondAttribute="height" multiplier="3:2" id="KPy-z9-LRY"/>
                                         </constraints>
@@ -53,7 +53,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Swipe up to share" translatesAutoresizingMaskIntoConstraints="NO" id="8zh-d4-pQk">
-                                        <rect key="frame" x="10" y="142" width="126.5" height="29"/>
+                                        <rect key="frame" x="0.0" y="95" width="134" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="0Zi-uA-vzE"/>
                                             <constraint firstAttribute="width" secondItem="8zh-d4-pQk" secondAttribute="height" multiplier="159:29" id="Syw-bJ-V9c"/>
@@ -85,7 +85,6 @@
                                     <constraint firstItem="8zh-d4-pQk" firstAttribute="leading" secondItem="0nR-Wz-yVj" secondAttribute="leading" constant="70" id="4qI-Gu-1Sq">
                                         <variation key="heightClass=compact" constant="10"/>
                                     </constraint>
-                                    <constraint firstItem="pxT-1t-Uk3" firstAttribute="leading" secondItem="0nR-Wz-yVj" secondAttribute="leading" constant="78" id="CbV-B9-J84"/>
                                     <constraint firstItem="pxT-1t-Uk3" firstAttribute="leading" secondItem="0nR-Wz-yVj" secondAttribute="leading" constant="92" id="DQn-Ia-QqT"/>
                                     <constraint firstItem="sgk-IZ-Rk6" firstAttribute="leading" secondItem="0nR-Wz-yVj" secondAttribute="leading" id="Mr4-hd-kUZ"/>
                                     <constraint firstItem="8zh-d4-pQk" firstAttribute="leading" secondItem="0nR-Wz-yVj" secondAttribute="leading" constant="9" id="SEE-Bi-ILb"/>
@@ -101,7 +100,7 @@
                                     <constraint firstItem="8zh-d4-pQk" firstAttribute="leading" secondItem="0nR-Wz-yVj" secondAttribute="leading" id="iLG-hM-xHN"/>
                                     <constraint firstItem="8zh-d4-pQk" firstAttribute="leading" secondItem="0nR-Wz-yVj" secondAttribute="leading" constant="9" id="ke7-Ay-SKJ"/>
                                     <constraint firstAttribute="trailing" secondItem="pxT-1t-Uk3" secondAttribute="trailing" constant="173" id="mdT-sf-QrB">
-                                        <variation key="heightClass=compact" constant="187"/>
+                                        <variation key="heightClass=compact" constant="175"/>
                                     </constraint>
                                     <constraint firstItem="8zh-d4-pQk" firstAttribute="width" secondItem="0nR-Wz-yVj" secondAttribute="width" multiplier="0.531" id="sRm-pS-Jmq"/>
                                     <constraint firstAttribute="trailing" secondItem="8zh-d4-pQk" secondAttribute="trailing" constant="112" id="tY5-LH-BWj"/>
@@ -115,7 +114,6 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="CbV-B9-J84"/>
                                         <exclude reference="DQn-Ia-QqT"/>
                                         <exclude reference="mdT-sf-QrB"/>
                                         <exclude reference="4qI-Gu-1Sq"/>
@@ -134,7 +132,6 @@
                                 </variation>
                                 <variation key="heightClass=compact">
                                     <mask key="constraints">
-                                        <include reference="CbV-B9-J84"/>
                                         <exclude reference="DQn-Ia-QqT"/>
                                         <exclude reference="d8O-du-COk"/>
                                         <include reference="mdT-sf-QrB"/>
@@ -161,19 +158,19 @@
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mMS-Pw-TX5" userLabel="Stack View Display">
-                                <rect key="frame" x="161.5" y="59" width="245" height="245"/>
+                                <rect key="frame" x="32" y="156" width="256" height="256"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-uZ-KTM" userLabel="ViewGeneral">
-                                        <rect key="frame" x="0.0" y="0.0" width="245" height="245"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
-                                                <rect key="frame" x="15" y="15" width="215" height="101"/>
+                                                <rect key="frame" x="15" y="15" width="226" height="106.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="j9o-3o-qHL" secondAttribute="height" multiplier="270:127" id="O08-sO-4UU"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-mm-kfh" userLabel="StackViewBottom">
-                                                <rect key="frame" x="15" y="128" width="215" height="102"/>
+                                                <rect key="frame" x="15" y="134" width="226" height="107"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Tqo-mm-kfh" secondAttribute="height" multiplier="135:64" id="oYN-fA-cWl"/>
                                                 </constraints>
@@ -224,27 +221,27 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
-                                <rect key="frame" x="443.5" y="59" width="65.5" height="245"/>
+                                <rect key="frame" x="40.5" y="468.5" width="239" height="67.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxq-jv-Isg">
-                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="61.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxq-jv-Isg" userLabel="Button View Large Two">
+                                        <rect key="frame" x="0.0" y="0.0" width="66.5" height="67.5"/>
                                         <state key="normal" image="Selected" backgroundImage="Layout 1"/>
                                         <connections>
-                                            <action selector="showViewLargeTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u65-jK-bj6"/>
+                                            <action selector="showViewLargeTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsY-Ry-J9q"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cu-hg-aH7" userLabel="Button View Two Large">
-                                        <rect key="frame" x="0.0" y="91.5" width="65.5" height="62"/>
+                                        <rect key="frame" x="86.5" y="0.0" width="66" height="67.5"/>
                                         <state key="normal" image="Selected" backgroundImage="Layout 2"/>
                                         <connections>
-                                            <action selector="showViewTwoLArge:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AJF-9R-XhJ"/>
+                                            <action selector="showViewTwoLarge:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f1K-V0-PhK"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yv1-oq-nuS">
-                                        <rect key="frame" x="0.0" y="183.5" width="65.5" height="61.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yv1-oq-nuS" userLabel="Button View Two Two">
+                                        <rect key="frame" x="172.5" y="0.0" width="66.5" height="67.5"/>
                                         <state key="normal" image="Selected" backgroundImage="Layout 3"/>
                                         <connections>
-                                            <action selector="showViewTwoTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2EB-cQ-1op"/>
+                                            <action selector="showViewTwoTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vI2-y5-xdM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -253,14 +250,12 @@
                                     <constraint firstAttribute="width" constant="80" id="UqG-W6-1pZ"/>
                                     <constraint firstAttribute="width" secondItem="nKK-Qc-kJx" secondAttribute="height" multiplier="4:15" id="WfH-Mv-E3I"/>
                                     <constraint firstAttribute="width" secondItem="nKK-Qc-kJx" secondAttribute="height" multiplier="283:80" id="aCL-sm-jIA"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="aYX-5k-bWV"/>
                                     <constraint firstAttribute="width" secondItem="nKK-Qc-kJx" secondAttribute="height" multiplier="2:7" id="iiK-l9-bdE"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="UqG-W6-1pZ"/>
                                         <exclude reference="WfH-Mv-E3I"/>
-                                        <exclude reference="aYX-5k-bWV"/>
                                         <exclude reference="iiK-l9-bdE"/>
                                     </mask>
                                 </variation>
@@ -269,7 +264,6 @@
                                         <exclude reference="UqG-W6-1pZ"/>
                                         <include reference="WfH-Mv-E3I"/>
                                         <exclude reference="aCL-sm-jIA"/>
-                                        <include reference="aYX-5k-bWV"/>
                                         <exclude reference="iiK-l9-bdE"/>
                                     </mask>
                                 </variation>
@@ -414,13 +408,12 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="buttonViewLargeTwo" destination="Wxq-jv-Isg" id="9w6-Lg-9iG"/>
-                        <outlet property="buttonViewTwoLarge" destination="3Cu-hg-aH7" id="YIa-m0-r5Y"/>
-                        <outlet property="buttonViewTwoTwo" destination="Yv1-oq-nuS" id="1jw-Fh-2zQ"/>
+                        <outlet property="buttonViewLargeTwo" destination="Wxq-jv-Isg" id="aoS-6J-5S1"/>
+                        <outlet property="buttonViewTwoLarge" destination="3Cu-hg-aH7" id="XkP-ic-pnR"/>
+                        <outlet property="buttonViewTwoTwo" destination="Yv1-oq-nuS" id="eGU-xa-7tj"/>
                         <outlet property="imageArrow" destination="pxT-1t-Uk3" id="joC-zm-SF3"/>
                         <outlet property="shareChoice" destination="8zh-d4-pQk" id="38x-b1-yvb"/>
                         <outlet property="stackViewBottom" destination="Tqo-mm-kfh" id="Vfn-bu-Csg"/>
-                        <outlet property="stackViewButtons" destination="nKK-Qc-kJx" id="HrI-h1-o6Y"/>
                         <outlet property="stackViewTop" destination="j9o-3o-qHL" id="3d1-Ys-yvN"/>
                     </connections>
                 </viewController>
