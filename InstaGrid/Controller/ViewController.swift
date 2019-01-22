@@ -19,11 +19,12 @@ UINavigationControllerDelegate {
     
     @IBOutlet weak var stackViewButtons: UIStackView!
     
+    @IBOutlet weak var viewToShare: UIView!
+    
     @IBOutlet weak var viewGeneral: UIView!
     
     var buttonsArray = [UIButton]()
     var viewButtonsArray = [UIButton]()
-    
     var currentTag: Int = 0
     
     override func viewDidLoad() {
@@ -31,18 +32,15 @@ UINavigationControllerDelegate {
         
         
         super.viewDidLoad()
-//        let picker = UIImagePickerController()
-//        picker.delegate = self
+
         
         createButtons() // creates the four buttons so they can by added later in the two different stackView
-        // stackViewTop will contain maximum two
-        // stackViewBottom will contain maximum two
-        // it will depend on the type of the frame shown
+                        // stackViewTop will contain maximum two
+                        // stackViewBottom will contain maximum two
+                        // it will depend on the type of the frame shown
         setViewTwoLarge()
         
-//        buttonViewLargeTwo.imageView!.isHidden = true // displays the buttonViewLargeTwo checked image
-//        buttonViewTwoTwo.imageView!.isHidden = true // displays the buttonViewLargeTwo checked image
-//        buttonViewTwoLarge.imageView!.isHidden = false // displays the buttonViewLargeTwo checked image
+
         stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
         stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
         stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
@@ -61,7 +59,7 @@ UINavigationControllerDelegate {
             print("up")
         }
         
-        self.viewGeneral.addGestureRecognizer(gesture)
+        self.viewToShare.addGestureRecognizer(gesture)
     }
     //Mark: - Display
     
@@ -72,14 +70,16 @@ UINavigationControllerDelegate {
         if sender.tag == 0 {
             print("sender egale 0")
             resetStackView() // call resetStackView method
+            
             stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-            stackViewBottom.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewBottom in position three
-            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position four
+            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position three
+            stackViewBottom.addArrangedSubview(buttonsArray[3]) // adds the button to the stackViewBottom in position four
             setViewLargeTwo()
         }
         if sender.tag == 1 {
             print("sender egale 1")
             resetStackView() // call resetStackView method
+            
             stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
             stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
             stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewTop in position Three
@@ -89,6 +89,7 @@ UINavigationControllerDelegate {
         if sender.tag == 2 {
             print("sender egale 2")
             resetStackView() // call resetStackView method
+           
             stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
             stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position One
             stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
@@ -97,40 +98,16 @@ UINavigationControllerDelegate {
             
            
         }
+
        }
-    
-
-    
-
     
     //Mark: - Actions
     
     @objc func buttonAddImagePressed(sender: UIButton!) { // add image in position 1
         
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = false // allows not the editing access to the picker
-        picker.sourceType = .photoLibrary // declares the type of the source
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        picker.modalPresentationStyle = UIModalPresentationStyle.currentContext // allows the landscape view
-        present(picker, animated: true, completion: nil)
-        
-        if sender.tag == 0 {
-            currentTag = sender.tag // sets currentTag to the sender.tag
-        }
-        if sender.tag == 1 {
-            
-            currentTag = sender.tag
-        }
-        if sender.tag == 2 {
-            
-            currentTag = sender.tag
-        }
-        if sender.tag == 3 {
-            
-            currentTag = sender.tag
-            
-        }
+        setUIImagePickerController()
+        currentTag = sender.tag
+
     }
     
     @objc func shareFrame() {
@@ -145,22 +122,9 @@ UINavigationControllerDelegate {
                                      didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         
         if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            if currentTag == 0 {
-                buttonsArray[0].setImage(chosenImage, for: .normal)
-                
-            }
-            if currentTag == 1 {
-                buttonsArray[1].setImage(chosenImage, for: .normal)
-                
-            }
-            if currentTag == 2 {
-                buttonsArray[2].setImage(chosenImage, for: .normal)
-                
-            }
-            if currentTag == 3 {
-                buttonsArray[3].setImage(chosenImage, for: .normal)
-                
-            }
+            
+            buttonsArray[currentTag].setImage(chosenImage, for: .normal)
+           
             
         }
         
@@ -189,9 +153,10 @@ UINavigationControllerDelegate {
             
             let button = UIButton()
             
-            button.imageView!.contentMode = .scaleToFill
+            button.imageView!.contentMode = .scaleAspectFill
             button.backgroundColor = .white
             button.setImage(UIImage(named: "Combined Shape"), for: .normal)
+//          
             button.tag = tag
             button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
             buttonsArray.append(button)
@@ -199,14 +164,14 @@ UINavigationControllerDelegate {
             
         }
     }
-    func createViewButtons() { // creates four buttons from tag 1 - 3
+    func createViewButtons() { // creates three buttons from tag 0 - 2
        
         for tag in 0...2 {
             
             
             let button = UIButton()
             
-            button.imageView!.contentMode = .scaleToFill
+            button.imageView!.contentMode = .scaleAspectFill
             //button.setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
             button.tag = tag
             button.addTarget(self, action: #selector(buttonViewPressed), for: .touchUpInside)
@@ -247,6 +212,15 @@ UINavigationControllerDelegate {
         viewButtonsArray[1].setImage(#imageLiteral(resourceName: "Layout 2"), for: .normal)
         viewButtonsArray[2].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
     }
+    func setUIImagePickerController() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = false // allows not the editing access to the picker
+        picker.sourceType = .photoLibrary // declares the type of the source
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        picker.modalPresentationStyle = UIModalPresentationStyle.currentContext // allows the landscape view
+        present(picker, animated: true, completion: nil)
+    }
 }
 extension UIView {
     
@@ -259,3 +233,8 @@ extension UIView {
         }
     }
 }
+
+
+
+
+
