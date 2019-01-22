@@ -163,13 +163,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-uZ-KTM" userLabel="ViewGeneral">
                                         <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
                                                 <rect key="frame" x="15" y="15" width="226" height="106.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="j9o-3o-qHL" secondAttribute="height" multiplier="270:127" id="O08-sO-4UU"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-mm-kfh" userLabel="StackViewBottom">
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-mm-kfh" userLabel="StackViewBottom">
                                                 <rect key="frame" x="15" y="134" width="226" height="107"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Tqo-mm-kfh" secondAttribute="height" multiplier="135:64" id="oYN-fA-cWl"/>
@@ -390,7 +390,8 @@
                         <outlet property="stackViewBottom" destination="Tqo-mm-kfh" id="Vfn-bu-Csg"/>
                         <outlet property="stackViewButtons" destination="nKK-Qc-kJx" id="eQK-wD-qqF"/>
                         <outlet property="stackViewTop" destination="j9o-3o-qHL" id="3d1-Ys-yvN"/>
-                        <outlet property="viewGeneral" destination="2s5-uZ-KTM" id="9Y0-qc-IeD"/>
+                        <outlet property="viewGeneral" destination="2s5-uZ-KTM" id="NPV-L8-rYL"/>
+                        <outlet property="viewToShare" destination="0nR-Wz-yVj" id="Ryn-dR-Q9b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
