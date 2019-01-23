@@ -156,7 +156,7 @@ UINavigationControllerDelegate {
             //
             button.tag = tag
             button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
-            button.isUserInteractionEnabled = true
+            button.imageView!.isUserInteractionEnabled = true
             buttonsArray.append(button)
             
             print(button.tag)
