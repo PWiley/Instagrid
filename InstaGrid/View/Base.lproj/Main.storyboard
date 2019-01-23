@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,14 +14,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nR-Wz-yVj">
-                                <rect key="frame" x="93" y="28" width="134" height="114"/>
+                                <rect key="frame" x="8" y="6" width="280" height="223"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Instagrid" translatesAutoresizingMaskIntoConstraints="NO" id="sgk-IZ-Rk6">
-                                        <rect key="frame" x="0.0" y="0.0" width="134" height="30"/>
+                                        <rect key="frame" x="253" y="0.0" width="119" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="sgk-IZ-Rk6" secondAttribute="height" multiplier="157:35" id="OPd-o8-8hF"/>
                                             <constraint firstAttribute="width" constant="119" id="TwS-RV-Xhv"/>
@@ -42,7 +42,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="pxT-1t-Uk3" userLabel="ArrowUp">
-                                        <rect key="frame" x="59.5" y="63" width="15" height="10"/>
+                                        <rect key="frame" x="95" y="168" width="10" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pxT-1t-Uk3" secondAttribute="height" multiplier="3:2" id="KPy-z9-LRY"/>
                                         </constraints>
@@ -51,9 +51,10 @@
                                                 <exclude reference="KPy-z9-LRY"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" image="Arrow Left"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Swipe up to share" translatesAutoresizingMaskIntoConstraints="NO" id="8zh-d4-pQk">
-                                        <rect key="frame" x="0.0" y="95" width="134" height="19"/>
+                                        <rect key="frame" x="10" y="197" width="149" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="0Zi-uA-vzE"/>
                                             <constraint firstAttribute="width" secondItem="8zh-d4-pQk" secondAttribute="height" multiplier="159:29" id="Syw-bJ-V9c"/>
@@ -75,6 +76,7 @@
                                                 <exclude reference="wwb-6N-5qK"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" image="Swipe left to share"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,19 +160,19 @@
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mMS-Pw-TX5" userLabel="Stack View Display">
-                                <rect key="frame" x="32" y="156" width="256" height="256"/>
+                                <rect key="frame" x="183.5" y="59" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-uZ-KTM" userLabel="ViewGeneral">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
-                                                <rect key="frame" x="15" y="15" width="226" height="106.5"/>
+                                                <rect key="frame" x="15" y="15" width="270" height="127"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="j9o-3o-qHL" secondAttribute="height" multiplier="270:127" id="O08-sO-4UU"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-mm-kfh" userLabel="StackViewBottom">
-                                                <rect key="frame" x="15" y="134" width="226" height="107"/>
+                                                <rect key="frame" x="15" y="157" width="270" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Tqo-mm-kfh" secondAttribute="height" multiplier="135:64" id="oYN-fA-cWl"/>
                                                 </constraints>
@@ -221,7 +223,7 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
-                                <rect key="frame" x="40.5" y="468.5" width="239" height="67.5"/>
+                                <rect key="frame" x="528" y="59" width="80" height="300"/>
                                 <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="UqG-W6-1pZ"/>
@@ -396,12 +398,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.78410794602701" y="130.40000000000001"/>
+            <point key="canvasLocation" x="130.40000000000001" y="129.98500749625188"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Arrow Left" width="10" height="15"/>
         <image name="Arrow Up" width="15" height="10"/>
         <image name="Instagrid" width="123" height="35"/>
+        <image name="Swipe left to share" width="169" height="22"/>
         <image name="Swipe up to share" width="159" height="22"/>
     </resources>
 </document>

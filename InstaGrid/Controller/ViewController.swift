@@ -61,6 +61,21 @@ UINavigationControllerDelegate {
         
         self.viewToShare.addGestureRecognizer(gesture)
     }
+    
+    //override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // first get the location in the parent view
+        let location = touches.first!.location(in: self.viewGeneral)
+        
+        // ask the parent view to give you the subview falling under the location
+        let view = self.viewGeneral.hitTest(location, with: event)
+        
+        // do what you want with it
+        //print("View: %@", NSStringFromClass((view?.classForCoder)!))
+        print(location)
+        print(view as Any)
+    }
+    
     //Mark: - Display
     
     @IBAction func buttonViewPressed(_ sender: UIButton!) {
@@ -117,25 +132,8 @@ UINavigationControllerDelegate {
     
     
     
-    //MARK: - Delegates
-    @objc func imagePickerController(_ picker: UIImagePickerController,
-                                     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-        
-        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            
-            buttonsArray[currentTag].setImage(chosenImage, for: .normal)
-           
-            
-        }
-        
-        dismiss(animated:true, completion: nil) //5
-        
-        
-    }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
     
+   
     func resetStackView() { // reset the stackView content to none
         
         stackViewTop.subviews.forEach { (item) in // remove the views from stackViewTop
@@ -145,7 +143,6 @@ UINavigationControllerDelegate {
             item.removeFromSuperview()
         }
     }
-    
     func createButtons() { // creates four buttons from tag 0 - 3
         
         for tag in 0...3 {
@@ -156,16 +153,18 @@ UINavigationControllerDelegate {
             button.imageView!.contentMode = .scaleAspectFill
             button.backgroundColor = .white
             button.setImage(UIImage(named: "Combined Shape"), for: .normal)
-//          
+            //
             button.tag = tag
             button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
+            button.isUserInteractionEnabled = true
             buttonsArray.append(button)
+            
             print(button.tag)
             
         }
     }
     func createViewButtons() { // creates three buttons from tag 0 - 2
-       
+        
         for tag in 0...2 {
             
             
@@ -188,9 +187,14 @@ UINavigationControllerDelegate {
         stackViewButtons.addArrangedSubview(viewButtonsArray[1])
         stackViewButtons.addArrangedSubview(viewButtonsArray[2])
         
-       
+        
         
     }
+    
+   
+   
+    
+   
     func setViewLargeTwo() {
         createViewButtons()
         viewButtonsArray[0].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
@@ -213,15 +217,37 @@ UINavigationControllerDelegate {
         viewButtonsArray[2].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
     }
     func setUIImagePickerController() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
+        let picker = UIImagePickerController() // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        picker.delegate = self // Make sure ViewController is notified when the user picks an image.
         picker.allowsEditing = false // allows not the editing access to the picker
-        picker.sourceType = .photoLibrary // declares the type of the source
+        picker.sourceType = .photoLibrary // declares the type of the source // Only allow photos to be picked, not taken.
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         picker.modalPresentationStyle = UIModalPresentationStyle.currentContext // allows the landscape view
         present(picker, animated: true, completion: nil)
     }
+    //MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController,
+                                     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        
+        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            buttonsArray[currentTag].setImage(chosenImage, for: .normal)
+            
+            
+        }
+        
+        dismiss(animated:true, completion: nil) //5
+        
+        
+    }
 }
+
+
 extension UIView {
     
     // Using a function since `var image` might conflict with an existing variable
