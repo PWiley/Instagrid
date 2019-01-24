@@ -27,6 +27,8 @@ UINavigationControllerDelegate {
     var viewButtonsArray = [UIButton]()
     var currentTag: Int = 0
     
+    //let picker = UIImagePickerController() // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+    
     override func viewDidLoad() {
         
         
@@ -45,7 +47,7 @@ UINavigationControllerDelegate {
         stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
         stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
         
-        
+
         
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -62,19 +64,7 @@ UINavigationControllerDelegate {
         self.viewToShare.addGestureRecognizer(gesture)
     }
     
-    //override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // first get the location in the parent view
-        let location = touches.first!.location(in: self.viewGeneral)
-        
-        // ask the parent view to give you the subview falling under the location
-        let view = self.viewGeneral.hitTest(location, with: event)
-        
-        // do what you want with it
-        //print("View: %@", NSStringFromClass((view?.classForCoder)!))
-        print(location)
-        print(view as Any)
-    }
+    
     
     //Mark: - Display
     
@@ -118,11 +108,19 @@ UINavigationControllerDelegate {
     
     //Mark: - Actions
     
-    @objc func buttonAddImagePressed(sender: UIButton!) { // add image in position 1
-        
+    @objc func buttonAddImagePressed(sender: UIButton!) { // add image in the button position
+        print("button tapped")
         setUIImagePickerController()
         currentTag = sender.tag
+        print(sender.tag)
 
+    }
+    
+    @objc func buttonSwipeImage(sender: UIButton!) {
+        print("button swiped")
+        currentTag = sender.tag
+        print(sender.tag)
+        print(buttonsArray[currentTag].imageView as Any)
     }
     
     @objc func shareFrame() {
@@ -150,16 +148,19 @@ UINavigationControllerDelegate {
             
             let button = UIButton()
             
+            
             button.imageView!.contentMode = .scaleAspectFill
             button.backgroundColor = .white
             button.setImage(UIImage(named: "Combined Shape"), for: .normal)
-            //
             button.tag = tag
             button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
-            button.imageView!.isUserInteractionEnabled = true
+            button.addTarget(self, action: #selector(buttonSwipeImage), for: .touchDragOutside)
+            
             buttonsArray.append(button)
             
-            print(button.tag)
+            print(buttonsArray.count)
+            
+            //print(button.tag)
             
         }
     }
@@ -175,7 +176,8 @@ UINavigationControllerDelegate {
             button.tag = tag
             button.addTarget(self, action: #selector(buttonViewPressed), for: .touchUpInside)
             viewButtonsArray.append(button)
-            print(button.tag)
+            
+            //print(button.tag)
             
             
         }
@@ -197,7 +199,7 @@ UINavigationControllerDelegate {
    
     func setViewLargeTwo() {
         createViewButtons()
-        viewButtonsArray[0].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+        viewButtonsArray[0].setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         viewButtonsArray[1].setImage(#imageLiteral(resourceName: "Layout 2"), for: .normal)
         viewButtonsArray[2].setImage(#imageLiteral(resourceName: "Layout 3"), for: .normal)
         
@@ -245,6 +247,11 @@ UINavigationControllerDelegate {
         
         
     }
+    
+
+    
+    
+    
 }
 
 
