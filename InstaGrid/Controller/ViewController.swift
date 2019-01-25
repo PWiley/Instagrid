@@ -116,11 +116,22 @@ UINavigationControllerDelegate {
 
     }
     
-    @objc func buttonSwipeImage(sender: UIButton!) {
+    @objc func buttonSwipeImage(sender: UIButton, forEvent event: UIEvent) {
         print("button swiped")
         currentTag = sender.tag
         print(sender.tag)
         print(buttonsArray[currentTag].imageView as Any)
+    }
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        print("Hello is there anybody home")
+        if (sender.state == .ended) {
+
+            print("Long press Ended")
+        } else if (sender.state == .began) {
+            print("Long press detected.")
+        }
+
     }
     
     @objc func shareFrame() {
@@ -147,15 +158,16 @@ UINavigationControllerDelegate {
             
             
             let button = UIButton()
-            
-            
+            let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+            longPressGestureRecognizer.minimumPressDuration = 3
             button.imageView!.contentMode = .scaleAspectFill
             button.backgroundColor = .white
             button.setImage(UIImage(named: "Combined Shape"), for: .normal)
             button.tag = tag
             button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
-            button.addTarget(self, action: #selector(buttonSwipeImage), for: .touchDragOutside)
+            button.addTarget(self, action: #selector(buttonSwipeImage), for: .touchDownRepeat)
             
+            button.addGestureRecognizer(longPressGestureRecognizer)
             buttonsArray.append(button)
             
             print(buttonsArray.count)
@@ -193,7 +205,6 @@ UINavigationControllerDelegate {
         
     }
     
-   
    
     
    
@@ -248,7 +259,6 @@ UINavigationControllerDelegate {
         
     }
     
-
     
     
     
