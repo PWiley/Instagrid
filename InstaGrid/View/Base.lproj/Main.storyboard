@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="landscape">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,14 +14,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nR-Wz-yVj">
-                                <rect key="frame" x="8" y="6" width="280" height="223"/>
+                                <rect key="frame" x="109" y="28" width="157.5" height="141.5"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Instagrid" translatesAutoresizingMaskIntoConstraints="NO" id="sgk-IZ-Rk6">
-                                        <rect key="frame" x="253" y="0.0" width="119" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="sgk-IZ-Rk6" secondAttribute="height" multiplier="157:35" id="OPd-o8-8hF"/>
                                             <constraint firstAttribute="width" constant="119" id="TwS-RV-Xhv"/>
@@ -42,7 +42,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="pxT-1t-Uk3" userLabel="ArrowUp">
-                                        <rect key="frame" x="95" y="168" width="10" height="15"/>
+                                        <rect key="frame" x="71" y="87.5" width="15" height="10"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pxT-1t-Uk3" secondAttribute="height" multiplier="3:2" id="KPy-z9-LRY"/>
                                         </constraints>
@@ -54,7 +54,7 @@
                                         <variation key="heightClass=compact-widthClass=compact" image="Arrow Left"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Swipe up to share" translatesAutoresizingMaskIntoConstraints="NO" id="8zh-d4-pQk">
-                                        <rect key="frame" x="10" y="197" width="149" height="29"/>
+                                        <rect key="frame" x="0.0" y="119.5" width="157.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="0Zi-uA-vzE"/>
                                             <constraint firstAttribute="width" secondItem="8zh-d4-pQk" secondAttribute="height" multiplier="159:29" id="Syw-bJ-V9c"/>
@@ -121,8 +121,6 @@
                                         <exclude reference="bPE-HV-J0j"/>
                                         <exclude reference="fDE-c5-v6p"/>
                                         <exclude reference="tzi-bH-J6Z"/>
-                                        <exclude reference="DQn-Ia-QqT"/>
-                                        <exclude reference="mdT-sf-QrB"/>
                                         <exclude reference="4qI-Gu-1Sq"/>
                                         <exclude reference="SEE-Bi-ILb"/>
                                         <exclude reference="bu7-Zo-cuI"/>
@@ -130,6 +128,8 @@
                                         <exclude reference="sRm-pS-Jmq"/>
                                         <exclude reference="tY5-LH-BWj"/>
                                         <exclude reference="ugw-aB-ELz"/>
+                                        <exclude reference="DQn-Ia-QqT"/>
+                                        <exclude reference="mdT-sf-QrB"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
@@ -142,9 +142,6 @@
                                         <exclude reference="bPE-HV-J0j"/>
                                         <exclude reference="fDE-c5-v6p"/>
                                         <include reference="tzi-bH-J6Z"/>
-                                        <exclude reference="DQn-Ia-QqT"/>
-                                        <exclude reference="d8O-du-COk"/>
-                                        <include reference="mdT-sf-QrB"/>
                                         <exclude reference="16t-39-ojc"/>
                                         <exclude reference="1FU-4U-eYK"/>
                                         <include reference="4qI-Gu-1Sq"/>
@@ -156,11 +153,14 @@
                                         <exclude reference="tY5-LH-BWj"/>
                                         <include reference="ugw-aB-ELz"/>
                                         <exclude reference="ysb-s1-x0R"/>
+                                        <exclude reference="DQn-Ia-QqT"/>
+                                        <exclude reference="d8O-du-COk"/>
+                                        <include reference="mdT-sf-QrB"/>
                                     </mask>
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mMS-Pw-TX5" userLabel="Stack View Display">
-                                <rect key="frame" x="183.5" y="59" width="300" height="300"/>
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-uZ-KTM" userLabel="ViewGeneral">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -179,6 +179,7 @@
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Tqo-mm-kfh" secondAttribute="bottom" constant="15" id="1m1-Ht-gKb"/>
                                             <constraint firstItem="Tqo-mm-kfh" firstAttribute="trailing" secondItem="j9o-3o-qHL" secondAttribute="trailing" id="8fd-YJ-MoE"/>
@@ -203,6 +204,9 @@
                                                 <include reference="B6f-Tm-7FC"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="6ex-2z-S7b" appends="YES" id="id6-i4-mXp"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -223,7 +227,7 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
-                                <rect key="frame" x="528" y="59" width="80" height="300"/>
+                                <rect key="frame" x="47.5" y="556" width="280" height="79"/>
                                 <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="UqG-W6-1pZ"/>
@@ -315,9 +319,6 @@
                                 <exclude reference="Ygp-vE-7cR"/>
                                 <exclude reference="crN-Pj-OCC"/>
                                 <exclude reference="v93-hh-hcX"/>
-                                <exclude reference="3T1-vw-5Ma"/>
-                                <exclude reference="Boq-BJ-90j"/>
-                                <exclude reference="E4b-wr-o15"/>
                                 <exclude reference="1f5-PM-2fr"/>
                                 <exclude reference="9dz-bN-yi0"/>
                                 <exclude reference="Cll-wr-EoM"/>
@@ -331,6 +332,9 @@
                                 <exclude reference="Ygi-nl-OlY"/>
                                 <exclude reference="dhc-Ui-4bx"/>
                                 <exclude reference="kq1-qk-idi"/>
+                                <exclude reference="3T1-vw-5Ma"/>
+                                <exclude reference="Boq-BJ-90j"/>
+                                <exclude reference="E4b-wr-o15"/>
                                 <exclude reference="4xi-Hv-UC3"/>
                                 <exclude reference="b1W-Mg-VCK"/>
                                 <exclude reference="cZF-IY-81S"/>
@@ -352,11 +356,6 @@
                                 <include reference="Ygp-vE-7cR"/>
                                 <exclude reference="crN-Pj-OCC"/>
                                 <exclude reference="v93-hh-hcX"/>
-                                <include reference="3T1-vw-5Ma"/>
-                                <exclude reference="Boq-BJ-90j"/>
-                                <include reference="E4b-wr-o15"/>
-                                <exclude reference="FRJ-Q2-SOY"/>
-                                <exclude reference="pVo-k3-oCu"/>
                                 <exclude reference="1f5-PM-2fr"/>
                                 <exclude reference="3Ha-tC-G3C"/>
                                 <exclude reference="9dz-bN-yi0"/>
@@ -374,6 +373,11 @@
                                 <exclude reference="dhc-Ui-4bx"/>
                                 <include reference="kq1-qk-idi"/>
                                 <exclude reference="kzV-vO-Sr5"/>
+                                <include reference="3T1-vw-5Ma"/>
+                                <exclude reference="Boq-BJ-90j"/>
+                                <include reference="E4b-wr-o15"/>
+                                <exclude reference="FRJ-Q2-SOY"/>
+                                <exclude reference="pVo-k3-oCu"/>
                                 <exclude reference="4xi-Hv-UC3"/>
                                 <exclude reference="b1W-Mg-VCK"/>
                                 <exclude reference="cAT-Ml-JrE"/>
@@ -388,6 +392,7 @@
                     </view>
                     <connections>
                         <outlet property="imageArrow" destination="pxT-1t-Uk3" id="joC-zm-SF3"/>
+                        <outlet property="panRecognizer" destination="6ex-2z-S7b" id="zWH-xJ-uv8"/>
                         <outlet property="shareChoice" destination="8zh-d4-pQk" id="38x-b1-yvb"/>
                         <outlet property="stackViewBottom" destination="Tqo-mm-kfh" id="Vfn-bu-Csg"/>
                         <outlet property="stackViewButtons" destination="nKK-Qc-kJx" id="eQK-wD-qqF"/>
@@ -397,6 +402,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="6ex-2z-S7b">
+                    <connections>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="jgv-o0-P2q"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="9Uh-9Y-zZ4"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="130.40000000000001" y="129.98500749625188"/>
         </scene>
