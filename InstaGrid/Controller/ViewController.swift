@@ -23,6 +23,8 @@ UINavigationControllerDelegate {
     
     @IBOutlet weak var viewGeneral: UIView!
     
+    @IBOutlet var panRecognizer: UIPanGestureRecognizer!
+    
     var buttonsArray = [UIButton]()
     var viewButtonsArray = [UIButton]()
     var currentTag: Int = 0
@@ -116,30 +118,29 @@ UINavigationControllerDelegate {
 
     }
     
-    @objc func buttonSwipeImage(sender: UIButton, forEvent event: UIEvent) {
-        print("button swiped")
-        currentTag = sender.tag
-        print(sender.tag)
-        print(buttonsArray[currentTag].imageView as Any)
-    }
-    
-    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
-        print("Hello is there anybody home")
-        if (sender.state == .ended) {
-
-            print("Long press Ended")
-        } else if (sender.state == .began) {
-            print("Long press detected.")
+    @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            state("began")
+            print("began")
+        case .failed:
+            state("failed")
+            print("failed")
+//        case .changed:
+//            analyze(label: "changed", recognizer: recognizer)
+//            print(recognizer)
+        case .ended:
+            analyze(label: "ended", recognizer: recognizer)
+            print(recognizer)
+        default:
+            break
         }
-
     }
     
     @objc func shareFrame() {
         let activityViewController = UIActivityViewController(activityItems: [viewGeneral.asImage()], applicationActivities:nil)
         present(activityViewController, animated: true,completion: nil)
     }
-    
-    
     
     
    
@@ -158,21 +159,17 @@ UINavigationControllerDelegate {
             
             
             let button = UIButton()
-            let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
-            longPressGestureRecognizer.minimumPressDuration = 3
+
             button.imageView!.contentMode = .scaleAspectFill
             button.backgroundColor = .white
             button.setImage(UIImage(named: "Combined Shape"), for: .normal)
             button.tag = tag
             button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
-            button.addTarget(self, action: #selector(buttonSwipeImage), for: .touchDownRepeat)
-            
-            button.addGestureRecognizer(longPressGestureRecognizer)
             buttonsArray.append(button)
             
             print(buttonsArray.count)
             
-            //print(button.tag)
+            
             
         }
     }
@@ -184,12 +181,13 @@ UINavigationControllerDelegate {
             let button = UIButton()
             
             button.imageView!.contentMode = .scaleAspectFill
-            //button.setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+            
+           
             button.tag = tag
             button.addTarget(self, action: #selector(buttonViewPressed), for: .touchUpInside)
             viewButtonsArray.append(button)
             
-            //print(button.tag)
+           
             
             
         }
@@ -258,8 +256,42 @@ UINavigationControllerDelegate {
         
         
     }
+    func analyze(label: String, recognizer: UIPanGestureRecognizer) {
+        let touchPoint = recognizer.location(in: recognizer.view)
+        
+        guard let recognizerAttachedToView = recognizer.view else {
+            state("\(label) - \(touchPoint)\nError A")
+            return
+        }
+        
+        guard let hitView = recognizerAttachedToView.hitTest(touchPoint, with: nil) else {
+            state("\(label) - \(touchPoint)\nError B")
+            return
+        }
+        
+        let endView = whichView(hitView)
+        state("\(label) - \(touchPoint)\n\(endView)")
+    }
     
+    func whichView(_ view: UIView) -> String {
+        switch view {
+        case buttonsArray[0]:
+            return "button1.imageView"
+        case buttonsArray[1]:
+            return "button2.imageView"
+        case buttonsArray[2]:
+            return "button3.imageView"
+        case buttonsArray[3]:
+            return "button4.imageView"
+        
+        default:
+            return "other view"
+        }
+    }
     
+    func state(_ text: String) {
+        print(text)
+    }
     
     
 }
@@ -275,6 +307,9 @@ extension UIView {
             layer.render(in: rendererContext.cgContext)
         }
     }
+}
+extension ViewController: UIGestureRecognizerDelegate {
+    
 }
 
 
