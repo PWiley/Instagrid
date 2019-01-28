@@ -13,43 +13,26 @@ UINavigationControllerDelegate {
     
     @IBOutlet weak var shareChoice: UIImageView!
     @IBOutlet weak var imageArrow: UIImageView!
-    
     @IBOutlet weak var stackViewTop: UIStackView!
     @IBOutlet weak var stackViewBottom: UIStackView!
-    
     @IBOutlet weak var stackViewButtons: UIStackView!
-    
     @IBOutlet weak var viewToShare: UIView!
-    
     @IBOutlet weak var viewGeneral: UIView!
-    
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!
     
     var buttonsArray = [UIButton]()
     var viewButtonsArray = [UIButton]()
     var currentTag: Int = 0
-    
-    //let picker = UIImagePickerController() // UIImagePickerController is a view controller that lets a user pick media from their photo library.
-    
+   
     override func viewDidLoad() {
         
-        
-        
         super.viewDidLoad()
-
-        
         createButtons() // creates the four buttons so they can by added later in the two different stackView
                         // stackViewTop will contain maximum two
                         // stackViewBottom will contain maximum two
                         // it will depend on the type of the frame shown
         setViewTwoLarge()
-        
-
-        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
-        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
-        
-
+        setStackView() // adds the button to the stackViews
         
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -66,13 +49,9 @@ UINavigationControllerDelegate {
         self.viewToShare.addGestureRecognizer(gesture)
     }
     
-    
-    
     //Mark: - Display
     
     @IBAction func buttonViewPressed(_ sender: UIButton!) {
-        
-        
         
         if sender.tag == 0 {
             print("sender egale 0")
@@ -108,7 +87,9 @@ UINavigationControllerDelegate {
 
        }
     
-    //Mark: - Actions
+    //MARK: - Actions
+    
+    
     
     @objc func buttonAddImagePressed(sender: UIButton!) { // add image in the button position
         print("button tapped")
@@ -119,22 +100,57 @@ UINavigationControllerDelegate {
     }
     
     @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
+        
         switch recognizer.state {
         case .began:
-            state("began")
-            print("began")
-        case .failed:
-            state("failed")
-            print("failed")
-//        case .changed:
-//            analyze(label: "changed", recognizer: recognizer)
+            analyze(label: "began", recognizer: recognizer)
+            print("The first View touched is : \(String(describing: recognizer.view))")
 //            print(recognizer)
         case .ended:
             analyze(label: "ended", recognizer: recognizer)
-            print(recognizer)
+            print("the second View touched is : \(String(describing: recognizer.view))")
+            
+            
         default:
             break
         }
+        
+    }
+    func analyze(label: String, recognizer: UIPanGestureRecognizer) {
+        let touchPoint = recognizer.location(in: recognizer.view)
+        
+        guard let recognizerAttachedToView = recognizer.view else {
+            state("\(label) - \(touchPoint)\nError A")
+            return
+        }
+        
+        guard let hitView = recognizerAttachedToView.hitTest(touchPoint, with: nil) else {
+            state("\(label) - \(touchPoint)\nError B")
+            return
+        }
+        
+        let endView = whichView(hitView)
+        state("\(label) - \(touchPoint)\n\(endView)")
+    }
+    
+    func whichView(_ view: UIView) -> UIImageView {
+        switch view {
+        case buttonsArray[0]:
+            return buttonsArray[0].imageView!
+        case buttonsArray[1]:
+            return buttonsArray[1].imageView!
+        case buttonsArray[2]:
+            return buttonsArray[2].imageView!
+        case buttonsArray[3]:
+            return buttonsArray[3].imageView!
+            
+        default:
+            return buttonsArray[0].imageView!
+        }
+    }
+    
+    func state(_ text: String) {
+        print(text)
     }
     
     @objc func shareFrame() {
@@ -143,16 +159,13 @@ UINavigationControllerDelegate {
     }
     
     
-   
-    func resetStackView() { // reset the stackView content to none
+    func swipeImage(image1: UIImageView, image2: UIImageView) {
         
-        stackViewTop.subviews.forEach { (item) in // remove the views from stackViewTop
-            item.removeFromSuperview()
-        }
-        stackViewBottom.subviews.forEach { (item) in // remove the views from stackViewBottom
-            item.removeFromSuperview()
-        }
+        
     }
+    
+   
+    
     func createButtons() { // creates four buttons from tag 0 - 3
         
         for tag in 0...3 {
@@ -256,43 +269,25 @@ UINavigationControllerDelegate {
         
         
     }
-    func analyze(label: String, recognizer: UIPanGestureRecognizer) {
-        let touchPoint = recognizer.location(in: recognizer.view)
-        
-        guard let recognizerAttachedToView = recognizer.view else {
-            state("\(label) - \(touchPoint)\nError A")
-            return
-        }
-        
-        guard let hitView = recognizerAttachedToView.hitTest(touchPoint, with: nil) else {
-            state("\(label) - \(touchPoint)\nError B")
-            return
-        }
-        
-        let endView = whichView(hitView)
-        state("\(label) - \(touchPoint)\n\(endView)")
+    
+    
+    //MARK: StackView handling
+    
+    fileprivate func setStackView() {
+        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
+        stackViewBottom.addArrangedSubview(buttonsArray[2])
     }
     
-    func whichView(_ view: UIView) -> String {
-        switch view {
-        case buttonsArray[0]:
-            return "button1.imageView"
-        case buttonsArray[1]:
-            return "button2.imageView"
-        case buttonsArray[2]:
-            return "button3.imageView"
-        case buttonsArray[3]:
-            return "button4.imageView"
+    fileprivate func resetStackView() { // reset the stackView content to none
         
-        default:
-            return "other view"
+        stackViewTop.subviews.forEach { (item) in // remove the views from stackViewTop
+            item.removeFromSuperview()
+        }
+        stackViewBottom.subviews.forEach { (item) in // remove the views from stackViewBottom
+            item.removeFromSuperview()
         }
     }
-    
-    func state(_ text: String) {
-        print(text)
-    }
-    
     
 }
 
