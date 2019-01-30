@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="landscape">
+    <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,18 +22,18 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="EPn-sr-vT1" userLabel="Stack View title/share/arrow">
-                                <rect key="frame" x="71" y="179" width="148" height="74.5"/>
+                                <rect key="frame" x="10" y="159" width="148" height="57.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GYp-QK-zXh" userLabel="Stack View Instagrid">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxb-95-SzL">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="38"/>
                                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="29"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -41,16 +41,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-fr-hy9" userLabel="Stack View Arrow/swipe">
-                                        <rect key="frame" x="0.0" y="0.0" width="148" height="74.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="57.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="^" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-al-Mxt">
-                                                <rect key="frame" x="0.0" y="0.0" width="148" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="148" height="30.5"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="31"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AC-g7-wMo">
-                                                <rect key="frame" x="0.0" y="34.5" width="148" height="40"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="148" height="27"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -91,16 +91,16 @@
                                 </variation>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-uZ-KTM" userLabel="ViewGeneral">
-                                <rect key="frame" x="320" y="59" width="331" height="331"/>
+                                <rect key="frame" x="185" y="59" width="256" height="256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xuN-wP-eVC" userLabel="Stack View Display">
-                                        <rect key="frame" x="15" y="15" width="301" height="301"/>
+                                        <rect key="frame" x="15" y="15" width="226" height="226"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
-                                                <rect key="frame" x="0.0" y="0.0" width="301" height="143"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="226" height="105.5"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="948-55-y22" userLabel="StackViewBottom">
-                                                <rect key="frame" x="0.0" y="158" width="301" height="143"/>
+                                                <rect key="frame" x="0.0" y="120.5" width="226" height="105.5"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -141,7 +141,7 @@
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
-                                <rect key="frame" x="743.5" y="59" width="88.5" height="331"/>
+                                <rect key="frame" x="479.5" y="59" width="68.5" height="256"/>
                                 <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nKK-Qc-kJx" secondAttribute="height" multiplier="7:2" id="7hI-2I-E0T"/>
@@ -168,7 +168,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cJ-Kt-N4T">
-                                <rect key="frame" x="406.5" y="11" width="159.5" height="43"/>
+                                <rect key="frame" x="241" y="11" width="125" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5cJ-Kt-N4T" secondAttribute="height" multiplier="114:37" id="0z1-7f-mzM"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114.5" id="adN-0a-xEj"/>
@@ -252,6 +252,10 @@
                                 <exclude reference="5cJ-Kt-N4T"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="3zn-5O-MUR"/>
+                                <exclude reference="RS6-5Z-wfd"/>
+                                <exclude reference="VRX-BU-fyD"/>
+                                <exclude reference="yKe-SU-1Yt"/>
                                 <exclude reference="6F4-ew-0a3"/>
                                 <exclude reference="6fE-uR-qR6"/>
                                 <exclude reference="Ju5-OA-O9I"/>
@@ -265,10 +269,6 @@
                                 <exclude reference="kzq-MA-XCH"/>
                                 <exclude reference="9YV-Xw-xi7"/>
                                 <exclude reference="m4E-78-VC6"/>
-                                <exclude reference="3zn-5O-MUR"/>
-                                <exclude reference="RS6-5Z-wfd"/>
-                                <exclude reference="VRX-BU-fyD"/>
-                                <exclude reference="yKe-SU-1Yt"/>
                                 <exclude reference="aDT-a2-PvZ"/>
                                 <exclude reference="h5D-ke-YK4"/>
                                 <exclude reference="yX4-Br-NzJ"/>
@@ -281,6 +281,10 @@
                                 <include reference="5cJ-Kt-N4T"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="3zn-5O-MUR"/>
+                                <include reference="RS6-5Z-wfd"/>
+                                <exclude reference="VRX-BU-fyD"/>
+                                <include reference="yKe-SU-1Yt"/>
                                 <exclude reference="6F4-ew-0a3"/>
                                 <exclude reference="6fE-uR-qR6"/>
                                 <exclude reference="Ju5-OA-O9I"/>
@@ -300,10 +304,6 @@
                                 <exclude reference="Vy9-3K-uw7"/>
                                 <include reference="m4E-78-VC6"/>
                                 <exclude reference="qC1-uJ-ifC"/>
-                                <include reference="3zn-5O-MUR"/>
-                                <include reference="RS6-5Z-wfd"/>
-                                <exclude reference="VRX-BU-fyD"/>
-                                <include reference="yKe-SU-1Yt"/>
                                 <exclude reference="Gom-aQ-tQr"/>
                                 <include reference="aDT-a2-PvZ"/>
                                 <exclude reference="h5D-ke-YK4"/>
