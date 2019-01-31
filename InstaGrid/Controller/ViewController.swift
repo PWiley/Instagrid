@@ -21,18 +21,35 @@ UINavigationControllerDelegate {
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!
     
     var buttonsArray = [UIButton]()
+    var buttonsImageArray = [#imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape")]
     var viewButtonsArray = [UIButton]()
     var currentTag: Int = 0
+    
+   
+//    var frame: frameState = .largeTwo
+//
+//    switch frame {
+//    case .twoTwo:
+//    print("Lots of planets have a north")
+//    case .largeTwo:
+//    print("Watch out for penguins")
+//    case .twoLarge:
+//    print("Where the sun rises")
+//
+//    }
    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        createButtons() // creates the four buttons so they can by added later in the two different stackView
+        //createButtons() // creates the four buttons so they can by added later in the two different stackView
                         // stackViewTop will contain maximum two
                         // stackViewBottom will contain maximum two
                         // it will depend on the type of the frame shown
         setViewTwoLarge()
+        
         setStackView() // adds the button to the stackViews
+        
+        frame = frameState.largeTwo
         
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -57,18 +74,35 @@ UINavigationControllerDelegate {
             print("sender egale 0")
             resetStackView() // call resetStackView method
             
-            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position three
-            stackViewBottom.addArrangedSubview(buttonsArray[3]) // adds the button to the stackViewBottom in position four
+//            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+//            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position three
+//            stackViewBottom.addArrangedSubview(buttonsArray[3]) // adds the button to the stackViewBottom in position four
+            
+            
+            // test
+            
+            stackViewTop.addArrangedSubview(createButtons(number: 1)) // adds the button to the stackViewTop in position One
+            stackViewBottom.addArrangedSubview(createButtons(number: 3)) // adds the button to the stackViewBottom in position three
+            stackViewBottom.addArrangedSubview(createButtons(number: 4)) // adds the button to the stackViewBottom in position four
+            // fin test
+            
             setViewLargeTwo()
         }
         if sender.tag == 1 {
             print("sender egale 1")
             resetStackView() // call resetStackView method
             
-            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-            stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
-            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewTop in position Three
+//            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+//            stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
+//            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewTop in position Three
+            // test
+            
+            stackViewTop.addArrangedSubview(createButtons(number: 1)) // adds the button to the stackViewTop in position One
+            stackViewTop.addArrangedSubview(createButtons(number: 2)) // adds the button to the stackViewTop in position Two
+            stackViewBottom.addArrangedSubview(createButtons(number: 3)) // adds the button to the stackViewTop in position Three
+            
+            
+            // fin test
             setViewTwoLarge()
             
         }
@@ -76,10 +110,18 @@ UINavigationControllerDelegate {
             print("sender egale 2")
             resetStackView() // call resetStackView method
            
-            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-            stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position One
-            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
-            stackViewBottom.addArrangedSubview(buttonsArray[3]) // adds the button to the stackViewBottom in position Four
+//            stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+//            stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position One
+//            stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewBottom in position Three
+//            stackViewBottom.addArrangedSubview(buttonsArray[3]) // adds the button to the stackViewBottom in position Four
+            // test
+            
+            stackViewTop.addArrangedSubview(createButtons(number: 1)) // adds the button to the stackViewTop in position One
+            stackViewTop.addArrangedSubview(createButtons(number: 2)) // adds the button to the stackViewTop in position One
+            stackViewBottom.addArrangedSubview(createButtons(number: 3)) // adds the button to the stackViewBottom in position Three
+            stackViewBottom.addArrangedSubview(createButtons(number: 4
+            )) // adds the button to the stackViewBottom in position Four
+            // fin test
             setViewTwoTwo()
             
            
@@ -166,25 +208,43 @@ UINavigationControllerDelegate {
     
    
     
-    func createButtons() { // creates four buttons from tag 0 - 3
+    func createButtons(number: Int) -> UIButton { // creates four buttons from tag 0 - 3
         
-        for tag in 0...3 {
-            
-            
-            let button = UIButton()
-
-            button.imageView!.contentMode = .scaleAspectFill
+        
+//            let button = UIButton()
+//
+//            button.imageView!.contentMode = .scaleAspectFill
+//            button.backgroundColor = .white
+//            button.setImage(UIImage(named: "Combined Shape"), for: .normal)
+//            button.tag = number
+//            button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
+//
+//        return button
+        
+        
+        // test
+       
+        
+        let button = UIButton()
+        
+        if buttonsImageArray[number - 1] == #imageLiteral(resourceName: "Combined Shape.png") {
+            print(buttonsImageArray[number - 1])
             button.backgroundColor = .white
-            button.setImage(UIImage(named: "Combined Shape"), for: .normal)
-            button.tag = tag
-            button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
-            buttonsArray.append(button)
-            
-            print(buttonsArray.count)
-            
-            
-            
+            button.setImage(buttonsImageArray[number - 1], for: .normal)
         }
+        else {
+            button.setImage(buttonsImageArray[number - 1], for: .normal)
+            print("Je dois avoir une image differente de la croix")
+            print(buttonsImageArray[number - 1])
+        }
+        button.imageView!.contentMode = .scaleAspectFill
+        button.tag = number
+        button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
+            
+        
+        return button
+        
+        // fin test
     }
     func createViewButtons() { // creates three buttons from tag 0 - 2
         
@@ -260,12 +320,16 @@ UINavigationControllerDelegate {
         
         if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             
-            buttonsArray[currentTag].setImage(chosenImage, for: .normal)
+            //buttonsArray[currentTag].setImage(chosenImage, for: .normal)
+            print("cela fonctionne toujours")
+            print(chosenImage)
+            print(currentTag)
+            buttonsImageArray[currentTag - 1] = chosenImage
             
-            
-        }
+           }
         
         dismiss(animated:true, completion: nil) //5
+        
         
         
     }
@@ -274,9 +338,20 @@ UINavigationControllerDelegate {
     //MARK: StackView handling
     
     fileprivate func setStackView() {
-        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
-        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
-        stackViewBottom.addArrangedSubview(buttonsArray[2])
+        
+//        stackViewTop.addArrangedSubview(buttonsArray[0]) // adds the button to the stackViewTop in position One
+//        stackViewTop.addArrangedSubview(buttonsArray[1]) // adds the button to the stackViewTop in position Two
+//        stackViewBottom.addArrangedSubview(buttonsArray[2]) // adds the button to the stackViewTop in position three
+        
+        //createButtons(1)
+        //createButtons(2)
+        //createButtons(3)
+        stackViewTop.addArrangedSubview(createButtons(number: 1)) // adds the button to the stackViewTop in position One
+        stackViewTop.addArrangedSubview(createButtons(number: 2)) // adds the button to the stackViewTop in position Two
+        stackViewBottom.addArrangedSubview(createButtons(number: 3)) // adds the button to the stackViewTop in position three
+
+        
+        
     }
     
     fileprivate func resetStackView() { // reset the stackView content to none
@@ -307,7 +382,11 @@ extension ViewController: UIGestureRecognizerDelegate {
     
 }
 
-
+//enum frameState {
+//    
+//    case twoTwo, largeTwo, twoLarge
+//    
+//    }
 
 
 
