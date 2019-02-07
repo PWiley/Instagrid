@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,17 +23,17 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="EPn-sr-vT1" userLabel="Stack View title/share/arrow">
-                                <rect key="frame" x="80" y="29" width="160" height="120"/>
+                                <rect key="frame" x="94" y="29" width="187.5" height="140.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GYp-QK-zXh" userLabel="Stack View Instagrid">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="38"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxb-95-SzL">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="38"/>
                                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="29"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -40,16 +41,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-fr-hy9" userLabel="Stack View Arrow/swipe">
-                                        <rect key="frame" x="0.0" y="79" width="160" height="41"/>
+                                        <rect key="frame" x="0.0" y="79" width="187.5" height="61.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="^" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-al-Mxt">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="14"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="34.5"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="31"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AC-g7-wMo">
-                                                <rect key="frame" x="0.0" y="14" width="160" height="27"/>
+                                                <rect key="frame" x="0.0" y="34.5" width="187.5" height="27"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -90,16 +91,16 @@
                                 </variation>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-uZ-KTM" userLabel="ViewGeneral">
-                                <rect key="frame" x="32" y="156" width="256" height="256"/>
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xuN-wP-eVC" userLabel="Stack View Display">
-                                        <rect key="frame" x="15" y="15" width="226" height="226"/>
+                                        <rect key="frame" x="15" y="15" width="270" height="270"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
-                                                <rect key="frame" x="0.0" y="0.0" width="226" height="105.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="127.5"/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="948-55-y22" userLabel="StackViewBottom">
-                                                <rect key="frame" x="0.0" y="120.5" width="226" height="105.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="948-55-y22" userLabel="StackViewBottom">
+                                                <rect key="frame" x="0.0" y="142.5" width="270" height="127.5"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -140,7 +141,7 @@
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
-                                <rect key="frame" x="40.5" y="478.5" width="239" height="68.5"/>
+                                <rect key="frame" x="47.5" y="550" width="280" height="80"/>
                                 <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nKK-Qc-kJx" secondAttribute="height" multiplier="7:2" id="7hI-2I-E0T"/>
@@ -167,7 +168,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cJ-Kt-N4T">
-                                <rect key="frame" x="241" y="11" width="125" height="33.5"/>
+                                <rect key="frame" x="322.5" y="11" width="142.5" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5cJ-Kt-N4T" secondAttribute="height" multiplier="114:37" id="0z1-7f-mzM"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114.5" id="adN-0a-xEj"/>
@@ -203,9 +204,9 @@
                             <constraint firstItem="pzA-ZO-dOR" firstAttribute="bottom" secondItem="nKK-Qc-kJx" secondAttribute="bottom" constant="16" id="6fE-uR-qR6">
                                 <variation key="heightClass=compact" constant="-5"/>
                             </constraint>
-                            <constraint firstItem="5cJ-Kt-N4T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pzA-ZO-dOR" secondAttribute="leading" symbolic="YES" id="6gf-pa-I1o"/>
                             <constraint firstItem="2s5-uZ-KTM" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="9YV-Xw-xi7"/>
                             <constraint firstItem="nKK-Qc-kJx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gom-aQ-tQr"/>
+                            <constraint firstItem="5cJ-Kt-N4T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pzA-ZO-dOR" secondAttribute="leading" symbolic="YES" id="HAg-2t-3JA"/>
                             <constraint firstItem="EPn-sr-vT1" firstAttribute="top" secondItem="pzA-ZO-dOR" secondAttribute="top" constant="179" id="HdZ-O0-dBC">
                                 <variation key="heightClass=compact-widthClass=compact" constant="159"/>
                             </constraint>
@@ -313,11 +314,15 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="arrowToShare" destination="BBv-al-Mxt" id="7je-oA-QiS"/>
+                        <outlet property="instagrid" destination="Rxb-95-SzL" id="GaJ-lj-EJt"/>
                         <outlet property="panRecognizer" destination="6ex-2z-S7b" id="zWH-xJ-uv8"/>
                         <outlet property="stackViewBottom" destination="948-55-y22" id="dHq-5Z-AKC"/>
                         <outlet property="stackViewButtons" destination="nKK-Qc-kJx" id="eQK-wD-qqF"/>
                         <outlet property="stackViewTop" destination="j9o-3o-qHL" id="3d1-Ys-yvN"/>
+                        <outlet property="swipeToShare" destination="3AC-g7-wMo" id="8jT-xz-GVm"/>
                         <outlet property="viewGeneral" destination="2s5-uZ-KTM" id="NPV-L8-rYL"/>
+                        <outlet property="viewToShare" destination="2s5-uZ-KTM" id="JrN-1G-zDw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
