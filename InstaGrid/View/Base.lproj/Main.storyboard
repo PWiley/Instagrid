@@ -136,9 +136,6 @@
                                         <exclude reference="rWk-Q9-afw"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="6ex-2z-S7b" appends="YES" id="id6-i4-mXp"/>
-                                </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
                                 <rect key="frame" x="47.5" y="550" width="280" height="80"/>
@@ -252,10 +249,6 @@
                                 <exclude reference="5cJ-Kt-N4T"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="3zn-5O-MUR"/>
-                                <exclude reference="RS6-5Z-wfd"/>
-                                <exclude reference="VRX-BU-fyD"/>
-                                <exclude reference="yKe-SU-1Yt"/>
                                 <exclude reference="6F4-ew-0a3"/>
                                 <exclude reference="6fE-uR-qR6"/>
                                 <exclude reference="Ju5-OA-O9I"/>
@@ -268,10 +261,14 @@
                                 <exclude reference="dCn-G3-i7X"/>
                                 <exclude reference="kzq-MA-XCH"/>
                                 <exclude reference="9YV-Xw-xi7"/>
-                                <exclude reference="m4E-78-VC6"/>
                                 <exclude reference="aDT-a2-PvZ"/>
                                 <exclude reference="h5D-ke-YK4"/>
                                 <exclude reference="yX4-Br-NzJ"/>
+                                <exclude reference="3zn-5O-MUR"/>
+                                <exclude reference="RS6-5Z-wfd"/>
+                                <exclude reference="VRX-BU-fyD"/>
+                                <exclude reference="yKe-SU-1Yt"/>
+                                <exclude reference="m4E-78-VC6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -281,10 +278,6 @@
                                 <include reference="5cJ-Kt-N4T"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="3zn-5O-MUR"/>
-                                <include reference="RS6-5Z-wfd"/>
-                                <exclude reference="VRX-BU-fyD"/>
-                                <include reference="yKe-SU-1Yt"/>
                                 <exclude reference="6F4-ew-0a3"/>
                                 <exclude reference="6fE-uR-qR6"/>
                                 <exclude reference="Ju5-OA-O9I"/>
@@ -300,18 +293,25 @@
                                 <include reference="kzq-MA-XCH"/>
                                 <exclude reference="vub-YJ-niL"/>
                                 <include reference="9YV-Xw-xi7"/>
-                                <exclude reference="UAZ-OW-C81"/>
-                                <exclude reference="Vy9-3K-uw7"/>
-                                <include reference="m4E-78-VC6"/>
-                                <exclude reference="qC1-uJ-ifC"/>
                                 <exclude reference="Gom-aQ-tQr"/>
                                 <include reference="aDT-a2-PvZ"/>
                                 <exclude reference="h5D-ke-YK4"/>
                                 <exclude reference="pV1-ZX-gjy"/>
                                 <exclude reference="sWr-2F-zT0"/>
                                 <include reference="yX4-Br-NzJ"/>
+                                <include reference="3zn-5O-MUR"/>
+                                <include reference="RS6-5Z-wfd"/>
+                                <exclude reference="VRX-BU-fyD"/>
+                                <include reference="yKe-SU-1Yt"/>
+                                <exclude reference="UAZ-OW-C81"/>
+                                <exclude reference="Vy9-3K-uw7"/>
+                                <include reference="m4E-78-VC6"/>
+                                <exclude reference="qC1-uJ-ifC"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6ex-2z-S7b" appends="YES" id="qzl-cS-EpA"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="arrowToShare" destination="BBv-al-Mxt" id="7je-oA-QiS"/>
@@ -319,6 +319,7 @@
                         <outlet property="panRecognizer" destination="6ex-2z-S7b" id="zWH-xJ-uv8"/>
                         <outlet property="stackViewBottom" destination="948-55-y22" id="dHq-5Z-AKC"/>
                         <outlet property="stackViewButtons" destination="nKK-Qc-kJx" id="eQK-wD-qqF"/>
+                        <outlet property="stackViewDisplay" destination="xuN-wP-eVC" id="vx3-Bv-60x"/>
                         <outlet property="stackViewTop" destination="j9o-3o-qHL" id="3d1-Ys-yvN"/>
                         <outlet property="swipeToShare" destination="3AC-g7-wMo" id="8jT-xz-GVm"/>
                         <outlet property="viewGeneral" destination="2s5-uZ-KTM" id="NPV-L8-rYL"/>
@@ -329,7 +330,6 @@
                 <panGestureRecognizer minimumNumberOfTouches="1" id="6ex-2z-S7b">
                     <connections>
                         <action selector="handlePan:" destination="BYZ-38-t0r" id="jgv-o0-P2q"/>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="9Uh-9Y-zZ4"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>

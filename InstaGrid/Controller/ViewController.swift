@@ -15,6 +15,7 @@ UINavigationControllerDelegate {
     @IBOutlet weak var instagrid: UILabel!
     @IBOutlet weak var swipeToShare: UILabel!
     @IBOutlet weak var arrowToShare: UILabel!
+    @IBOutlet weak var stackViewDisplay: UIStackView!
     @IBOutlet weak var stackViewTop: UIStackView!
     @IBOutlet weak var stackViewBottom: UIStackView!
     @IBOutlet weak var stackViewButtons: UIStackView!
@@ -31,19 +32,7 @@ UINavigationControllerDelegate {
     
     
     // enum pour les checked button frame choix
-    private var startView: UIView?
-    private var dragView: UIView? {
-        willSet {
-            dragView?.removeFromSuperview()
-        }
-        didSet {
-            guard let dragView = dragView else {
-                return
-            }
-            dragView.isUserInteractionEnabled = false
-            view.addSubview(dragView)
-        }
-    }
+   
     
 
    
@@ -58,9 +47,24 @@ UINavigationControllerDelegate {
 //        setViewTwoLarge()
 //
 //        setStackViewLargeTwo() // adds the button to the stackViews
-        
+        stackViewDisplay.addGestureRecognizer(panRecognizer)
+       
         whichFrame(frame: .twoLarge)
         
+    }
+    
+    private var startView: UIView?
+    private var dragView: UIView? {
+        willSet {
+            dragView?.removeFromSuperview()
+        }
+        didSet {
+            guard let dragView = dragView else {
+                return
+            }
+            dragView.isUserInteractionEnabled = false
+            view.addSubview(dragView)
+        }
     }
 //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 //        let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
@@ -138,7 +142,8 @@ UINavigationControllerDelegate {
             }
             dragView.alpha = 1
             // Put the copy right under the touch point
-            dragView.center = recognizer.location(in: recognizer.view)
+            //            dragView.center = recognizer.location(in: recognizer.view)
+            dragView.center = recognizer.location(in: viewGeneral)
             
             // Save it for later
             self.dragView = dragView
@@ -153,7 +158,7 @@ UINavigationControllerDelegate {
             //state("changed")
             
             // Put the copy right under the touch point
-            dragView?.center = recognizer.location(in: recognizer.view)
+            dragView?.center = recognizer.location(in: viewGeneral)
             
         case .ended:
             // Forget the stored values when this case ends
@@ -166,11 +171,12 @@ UINavigationControllerDelegate {
                 let startView = startView else {
                     return
             }
-            let startViewIndex = whichView(startView)
-            let endViewIndex = whichView(touchView)
+            let startImageIndex = whichView(startView)
+            let endImageIndex = whichView(touchView)
             
-            inverseImage(startImage: startViewIndex, endImage: endViewIndex)
-            
+            inverseImage(startImage: startImageIndex, endImage: endImageIndex)
+           
+            whichFrame(frame: stateFrame)
             
             
         default:
@@ -202,19 +208,19 @@ UINavigationControllerDelegate {
     func whichView(_ view: UIView) -> Int {
         switch view {
         case stackViewTop.viewWithTag(1):
-            //            return "orangeView"
+            //print("StackViewTop element 1")
             return 0
             
         case stackViewTop.viewWithTag(2):
-            //            return "blueView"
+            //print("StackViewTop element 2")
             return 1
             
-        case stackViewTop.viewWithTag(3):
-            //            return "greenView"
+        case stackViewBottom.viewWithTag(3):
+            //print("StackViewBottom element 1")
             return 2
             
-        case stackViewTop.viewWithTag(4):
-            //            return "greenView"
+        case stackViewBottom.viewWithTag(4):
+            //print("StackViewBottom element 2")
             return 3
             
         default:
@@ -226,23 +232,17 @@ UINavigationControllerDelegate {
     
     func inverseImage(startImage: Int ,endImage: Int) {
         
-//        let buttonImage1 = whichView(startButton)
-//        let buttonImage2 = whichView(endButton)
-//
-//        let imageFirst = buttonImage1.image(for: .normal)
-//        let imageSecond = buttonImage2.image(for: .normal)
-//
-//
-//        buttonImage2.setImage(imageFirst, for: .normal)
-//        buttonImage1.setImage(imageSecond, for: .normal)
-        
+   
     let firstImage = buttonsImageArray[startImage]
     let lastImage = buttonsImageArray[endImage]
+    
     buttonsImageArray[endImage] = firstImage
     buttonsImageArray[startImage] = lastImage
-    print(lastImage)
-    print(firstImage)
-        whichFrame(frame: stateFrame) // cela fonctionne mais faire le refresh avec le tableau d'images
+      
+//    print(lastImage)
+//    print(firstImage)
+//        print(whichFrame(frame: stateFrame))
+//    whichFrame(frame: stateFrame) // cela fonctionne mais faire le refresh avec le tableau d'images
     }
     
     @objc func shareFrame() {
