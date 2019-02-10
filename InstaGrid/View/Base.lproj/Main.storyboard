@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,14 +23,15 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="EPn-sr-vT1" userLabel="Stack View title/share/arrow">
-                                <rect key="frame" x="94" y="29" width="187.5" height="140.5"/>
+                                <rect key="frame" x="10" y="159" width="165" height="57.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GYp-QK-zXh" userLabel="Stack View Instagrid">
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxb-95-SzL">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="38"/>
@@ -41,16 +42,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-fr-hy9" userLabel="Stack View Arrow/swipe">
-                                        <rect key="frame" x="0.0" y="79" width="187.5" height="61.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="165" height="57.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="^" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-al-Mxt">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="34.5"/>
-                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="165" height="25.5"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="23"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AC-g7-wMo">
-                                                <rect key="frame" x="0.0" y="34.5" width="187.5" height="27"/>
+                                                <rect key="frame" x="0.0" y="25.5" width="165" height="32"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -70,7 +71,7 @@
                                     <constraint firstItem="MeW-fr-hy9" firstAttribute="top" secondItem="EPn-sr-vT1" secondAttribute="top" constant="79" id="0wZ-UR-nqo"/>
                                     <constraint firstAttribute="width" secondItem="EPn-sr-vT1" secondAttribute="height" multiplier="148:61" id="3eD-bb-5uz"/>
                                     <constraint firstAttribute="width" secondItem="EPn-sr-vT1" secondAttribute="height" multiplier="187:140" id="VwB-xR-1Gt"/>
-                                    <constraint firstAttribute="width" constant="148" id="f2h-56-ohI"/>
+                                    <constraint firstAttribute="width" constant="165" id="f2h-56-ohI"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -91,16 +92,16 @@
                                 </variation>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-uZ-KTM" userLabel="ViewGeneral">
-                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
+                                <rect key="frame" x="185" y="59" width="256" height="256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xuN-wP-eVC" userLabel="Stack View Display">
-                                        <rect key="frame" x="15" y="15" width="270" height="270"/>
+                                        <rect key="frame" x="15" y="15" width="226" height="226"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
-                                                <rect key="frame" x="0.0" y="0.0" width="270" height="127.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="226" height="105.5"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="948-55-y22" userLabel="StackViewBottom">
-                                                <rect key="frame" x="0.0" y="142.5" width="270" height="127.5"/>
+                                                <rect key="frame" x="0.0" y="120.5" width="226" height="105.5"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -138,7 +139,7 @@
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
-                                <rect key="frame" x="47.5" y="550" width="280" height="80"/>
+                                <rect key="frame" x="479.5" y="59" width="68.5" height="256"/>
                                 <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nKK-Qc-kJx" secondAttribute="height" multiplier="7:2" id="7hI-2I-E0T"/>
@@ -165,7 +166,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cJ-Kt-N4T">
-                                <rect key="frame" x="322.5" y="11" width="142.5" height="39"/>
+                                <rect key="frame" x="241" y="11" width="125" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5cJ-Kt-N4T" secondAttribute="height" multiplier="114:37" id="0z1-7f-mzM"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114.5" id="adN-0a-xEj"/>

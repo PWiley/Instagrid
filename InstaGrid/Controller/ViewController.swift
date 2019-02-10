@@ -66,19 +66,24 @@ UINavigationControllerDelegate {
             view.addSubview(dragView)
         }
     }
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
-//        if UIDevice.current.orientation.isLandscape { // test if the iphone is in landscape then gesture taking in charge will be the left one
-//            gesture.direction = .left
-//            print("left")
-//        }
-//        else { // or gesture up taken in charge
-//            gesture.direction = .up
-//            print("up")
-//        }
-//        
-//        self.viewToShare.addGestureRecognizer(gesture)
-//    }
+    
+        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+            let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
+            if UIDevice.current.orientation.isLandscape { // test if the iphone is in landscape then gesture taking in charge will be the left one
+                gesture.direction = .left
+                swipeToShare.text = "Swipe left to share"
+                arrowToShare.text = "<"
+                print("left")
+            }
+            else { // or gesture up taken in charge
+                gesture.direction = .up
+                swipeToShare.text = "Swipe up to share"
+                arrowToShare.text = "^"
+                print("up")
+            }
+    
+            self.viewToShare.addGestureRecognizer(gesture)
+        }
     
     //Mark: - Display
     
