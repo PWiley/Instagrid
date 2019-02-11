@@ -134,21 +134,22 @@ UINavigationControllerDelegate {
             
             // Remember the start view
             
-            
             startView = touchView
             //print(startView)
             
             // Create a "copy" do move along the pan
             guard let dragView = touchView.snapshotView(afterScreenUpdates: false) else {
                 // If creating a copy fails, let the gesture recognizer reset
-                recognizer.isEnabled = false
+//                recognizer.isEnabled = false
                 recognizer.isEnabled = true
+                
                 return
             }
             dragView.alpha = 1
             // Put the copy right under the touch point
             //            dragView.center = recognizer.location(in: recognizer.view)
             dragView.center = recognizer.location(in: viewGeneral)
+            //dragView.frame = dragView.frame.offsetBy(dx: 0, dy: 30)
             
             // Save it for later
             self.dragView = dragView
@@ -164,6 +165,10 @@ UINavigationControllerDelegate {
             
             // Put the copy right under the touch point
             dragView?.center = recognizer.location(in: viewGeneral)
+            dragView?.frame = dragView!.frame.offsetBy(dx: 0 , dy: stackViewDisplay.frame.height)
+//            let transformation = CGAffineTransform(translationX: recognizer.translation(in: stackViewDisplay).x, y: recognizer.translation(in: stackViewDisplay).y + 200)
+//            dragView?.transform = transformation
+            
             
         case .ended:
             // Forget the stored values when this case ends
