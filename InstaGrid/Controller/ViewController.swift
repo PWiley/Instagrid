@@ -19,6 +19,8 @@ UINavigationControllerDelegate {
     @IBOutlet weak var stackViewTop: UIStackView!
     @IBOutlet weak var stackViewBottom: UIStackView!
     @IBOutlet weak var stackViewButtons: UIStackView!
+    
+    @IBOutlet weak var stackViewToShare: UIStackView!
     @IBOutlet weak var viewToShare: UIView!
     @IBOutlet weak var viewGeneral: UIView!
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!
@@ -67,24 +69,38 @@ UINavigationControllerDelegate {
         }
     }
     
-        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-            let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
-            if UIDevice.current.orientation.isLandscape { // test if the iphone is in landscape then gesture taking in charge will be the left one
-                gesture.direction = .left
-                swipeToShare.text = "Swipe left to share"
-                arrowToShare.text = "<"
-                print("left")
-            }
-            else { // or gesture up taken in charge
-                gesture.direction = .up
-                swipeToShare.text = "Swipe up to share"
-                arrowToShare.text = "^"
-                print("up")
-            }
-    
-            self.viewToShare.addGestureRecognizer(gesture)
+//        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//            let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
+//            if UIDevice.current.orientation.isLandscape { // test if the iphone is in landscape then gesture taking in charge will be the left one
+//                gesture.direction = .left
+//                swipeToShare.text = "Swipe left to share"
+//                arrowToShare.text = "<"
+//                print("left")
+//            }
+//            else { // or gesture up taken in charge
+//                gesture.direction = .up
+//                swipeToShare.text = "Swipe up to share"
+//                arrowToShare.text = "^"
+//                print("up")
+//            }
+//
+//            self.viewToShare.addGestureRecognizer(gesture)
+//        }
+    let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print("Rotate")
+        if UIDevice.current.orientation.isPortrait {
+            print("portrait")
+            gesture.direction = .up
+            print(gesture)
         }
-    
+        else {
+            print("Landscape")
+            gesture.direction = .left
+            print(gesture)
+        }
+        self.stackViewToShare.addGestureRecognizer(gesture)
+    }
     //Mark: - Display
     
     
