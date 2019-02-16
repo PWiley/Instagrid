@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,11 +23,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cJ-Kt-N4T">
-                                <rect key="frame" x="318.33333333333331" y="15.666666666666664" width="114.66666666666669" height="39"/>
+                                <rect key="frame" x="286" y="-3" width="114.5" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5cJ-Kt-N4T" secondAttribute="height" multiplier="114:37" id="0z1-7f-mzM"/>
                                     <constraint firstAttribute="width" secondItem="5cJ-Kt-N4T" secondAttribute="height" multiplier="38:13" id="NRg-Ws-zGp"/>
@@ -60,7 +60,7 @@
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKK-Qc-kJx" userLabel="StackView Buttons">
-                                <rect key="frame" x="52.333333333333371" y="600" width="309.33333333333326" height="88.333333333333371"/>
+                                <rect key="frame" x="40.5" y="478.5" width="239" height="68.5"/>
                                 <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nKK-Qc-kJx" secondAttribute="height" multiplier="7:2" id="7hI-2I-E0T"/>
@@ -86,26 +86,23 @@
                                 <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
                                 <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="EPn-sr-vT1" userLabel="Stack View title/share/arrow">
-                                <rect key="frame" x="106.66666666666667" y="23" width="200.66666666666663" height="153"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="EPn-sr-vT1" userLabel="Stack View title/share/arrow">
+                                <rect key="frame" x="60" y="23" width="200.5" height="133.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxb-95-SzL">
-                                        <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="37.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200.5" height="37.5"/>
                                         <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="29"/>
                                         <color key="textColor" red="0.26721994139999999" green="0.21909280619999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ccd-TV-8Yk">
-                                        <rect key="frame" x="0.0" y="100.66666666666667" width="200.66666666666666" height="52.333333333333329"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ccd-TV-8Yk">
+                                        <rect key="frame" x="0.0" y="89.5" width="200.5" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="^" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-al-Mxt">
-                                                <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="25.666666666666668"/>
-                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="23"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow Up" highlightedImage="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="lg9-0H-P76">
+                                                <rect key="frame" x="0.0" y="0.0" width="200.5" height="10"/>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swipe left to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AC-g7-wMo">
-                                                <rect key="frame" x="0.0" y="25.666666666666671" width="200.66666666666666" height="26.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="17" width="200.5" height="27"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -153,16 +150,16 @@
                                 </variation>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-uZ-KTM" userLabel="ViewGeneral">
-                                <rect key="frame" x="41.333333333333343" y="202.33333333333334" width="331.33333333333326" height="331.33333333333326"/>
+                                <rect key="frame" x="32" y="156" width="256" height="256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xuN-wP-eVC" userLabel="Stack View Display">
-                                        <rect key="frame" x="15" y="15" width="301.33333333333331" height="301.33333333333331"/>
+                                        <rect key="frame" x="15" y="15" width="226" height="226"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j9o-3o-qHL" userLabel="StackViewTop">
-                                                <rect key="frame" x="0.0" y="0.0" width="301.33333333333331" height="143.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="226" height="105.5"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="948-55-y22" userLabel="StackViewBottom">
-                                                <rect key="frame" x="0.0" y="158.33333333333334" width="301.33333333333331" height="143.00000000000003"/>
+                                                <rect key="frame" x="0.0" y="120.5" width="226" height="105.5"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.14487612250000001" green="0.40310108659999999" blue="0.58757859469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -245,7 +242,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="286"/>
                             </constraint>
                             <constraint firstItem="nKK-Qc-kJx" firstAttribute="top" secondItem="2s5-uZ-KTM" secondAttribute="bottom" constant="66.5" id="pV1-ZX-gjy"/>
-                            <constraint firstItem="2s5-uZ-KTM" firstAttribute="leading" secondItem="EPn-sr-vT1" secondAttribute="trailing" constant="23" id="pxn-8Y-fGJ"/>
+                            <constraint firstItem="2s5-uZ-KTM" firstAttribute="leading" secondItem="EPn-sr-vT1" secondAttribute="trailing" constant="28" id="pxn-8Y-fGJ"/>
                             <constraint firstItem="2s5-uZ-KTM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qC1-uJ-ifC"/>
                             <constraint firstItem="nKK-Qc-kJx" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.747" id="sWr-2F-zT0"/>
                             <constraint firstItem="nKK-Qc-kJx" firstAttribute="top" secondItem="2s5-uZ-KTM" secondAttribute="top" id="str-7d-zK2"/>
@@ -260,13 +257,6 @@
                         <viewLayoutGuide key="safeArea" id="pzA-ZO-dOR"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="1c3-FA-DUN"/>
-                                <exclude reference="PW1-eg-R7H"/>
-                                <exclude reference="U0s-PV-S5r"/>
-                                <exclude reference="VRX-BU-fyD"/>
-                                <exclude reference="dvJ-8b-CbB"/>
-                                <exclude reference="gTe-vR-DyJ"/>
-                                <exclude reference="hgK-W4-qGZ"/>
                                 <exclude reference="6F4-ew-0a3"/>
                                 <exclude reference="6fE-uR-qR6"/>
                                 <exclude reference="Ju5-OA-O9I"/>
@@ -285,13 +275,20 @@
                                 <exclude reference="m4E-78-VC6"/>
                                 <exclude reference="pxn-8Y-fGJ"/>
                                 <exclude reference="ykP-l6-lFJ"/>
+                                <exclude reference="1c3-FA-DUN"/>
+                                <exclude reference="PW1-eg-R7H"/>
+                                <exclude reference="U0s-PV-S5r"/>
+                                <exclude reference="VRX-BU-fyD"/>
+                                <exclude reference="dvJ-8b-CbB"/>
+                                <exclude reference="gTe-vR-DyJ"/>
+                                <exclude reference="hgK-W4-qGZ"/>
+                                <exclude reference="yBJ-QA-IWf"/>
                                 <exclude reference="DRn-5E-c5p"/>
                                 <exclude reference="Ezg-9f-kwU"/>
                                 <exclude reference="aDT-a2-PvZ"/>
                                 <exclude reference="h5D-ke-YK4"/>
                                 <exclude reference="str-7d-zK2"/>
                                 <exclude reference="yX4-Br-NzJ"/>
-                                <exclude reference="yBJ-QA-IWf"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -301,13 +298,6 @@
                                 <include reference="2s5-uZ-KTM"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1c3-FA-DUN"/>
-                                <exclude reference="PW1-eg-R7H"/>
-                                <exclude reference="U0s-PV-S5r"/>
-                                <exclude reference="VRX-BU-fyD"/>
-                                <exclude reference="dvJ-8b-CbB"/>
-                                <exclude reference="gTe-vR-DyJ"/>
-                                <exclude reference="hgK-W4-qGZ"/>
                                 <exclude reference="6F4-ew-0a3"/>
                                 <exclude reference="6fE-uR-qR6"/>
                                 <exclude reference="Ju5-OA-O9I"/>
@@ -331,6 +321,14 @@
                                 <include reference="pxn-8Y-fGJ"/>
                                 <exclude reference="qC1-uJ-ifC"/>
                                 <include reference="ykP-l6-lFJ"/>
+                                <exclude reference="1c3-FA-DUN"/>
+                                <exclude reference="PW1-eg-R7H"/>
+                                <exclude reference="U0s-PV-S5r"/>
+                                <exclude reference="VRX-BU-fyD"/>
+                                <exclude reference="dvJ-8b-CbB"/>
+                                <exclude reference="gTe-vR-DyJ"/>
+                                <exclude reference="hgK-W4-qGZ"/>
+                                <exclude reference="yBJ-QA-IWf"/>
                                 <exclude reference="DRn-5E-c5p"/>
                                 <include reference="Ezg-9f-kwU"/>
                                 <exclude reference="Gom-aQ-tQr"/>
@@ -340,7 +338,6 @@
                                 <exclude reference="sWr-2F-zT0"/>
                                 <include reference="str-7d-zK2"/>
                                 <exclude reference="yX4-Br-NzJ"/>
-                                <exclude reference="yBJ-QA-IWf"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -363,7 +360,6 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="arrowToShare" destination="BBv-al-Mxt" id="7je-oA-QiS"/>
                         <outlet property="instagrid" destination="Rxb-95-SzL" id="GaJ-lj-EJt"/>
                         <outlet property="panRecognizer" destination="6ex-2z-S7b" id="zWH-xJ-uv8"/>
                         <outlet property="stackViewBottom" destination="948-55-y22" id="dHq-5Z-AKC"/>
@@ -386,4 +382,7 @@
             <point key="canvasLocation" x="127.2" y="126.38680659670166"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Arrow Up" width="15" height="10"/>
+    </resources>
 </document>
