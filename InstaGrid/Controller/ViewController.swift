@@ -12,16 +12,14 @@ class ViewController: UIViewController,
 UINavigationControllerDelegate {
     
  
-    @IBOutlet weak var instagrid: UILabel!
+   
     @IBOutlet weak var swipeToShare: UILabel!
-    @IBOutlet weak var arrowToShare: UILabel!
+
+    @IBOutlet weak var arrow: UIImageView!
     @IBOutlet weak var stackViewDisplay: UIStackView!
     @IBOutlet weak var stackViewTop: UIStackView!
     @IBOutlet weak var stackViewBottom: UIStackView!
     @IBOutlet weak var stackViewButtons: UIStackView!
-    
-    @IBOutlet weak var stackViewToShare: UIStackView!
-    @IBOutlet weak var viewToShare: UIView!
     @IBOutlet weak var viewGeneral: UIView!
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!
     
@@ -99,7 +97,7 @@ UINavigationControllerDelegate {
             gesture.direction = .left
             print(gesture)
         }
-        self.stackViewToShare.addGestureRecognizer(gesture)
+        self.viewGeneral.addGestureRecognizer(gesture)
     }
     //Mark: - Display
     
