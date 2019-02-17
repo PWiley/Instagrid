@@ -29,10 +29,11 @@ UINavigationControllerDelegate {
     var currentTag: Int = 0
     var stateFrame = frameState.twoLarge
     // checker le pan avec le bouton si glissé bug
-    
+     let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
     
     // enum pour les checked button frame choix
    
+
     
 
    
@@ -46,12 +47,39 @@ UINavigationControllerDelegate {
         
 //        setViewTwoLarge()
 //
-//        setStackViewLargeTwo() // adds the button to the stackViews
-        stackViewDisplay.addGestureRecognizer(panRecognizer)
        
+        stackViewDisplay.addGestureRecognizer(panRecognizer)
+        createGesture(direction: "up")
         whichFrame(frame: .twoLarge)
         
     }
+    
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        print("Rotate")
+//        swipeToShare.text = "Swipe left to share"
+//        arrow.image = #imageLiteral(resourceName: "Arrow Left")
+//        gesture.direction = .left
+//    }
+    
+            override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//                let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
+                if UIDevice.current.orientation.isLandscape { // test if the iphone is in landscape then gesture taking in charge will be the left one
+                    createGesture(direction: "left")
+                    //gesture.direction = .left
+                    swipeToShare.text = "Swipe left to share"
+                    arrow.image = #imageLiteral(resourceName: "Arrow Left")
+                    print("left")
+                }
+                else { // or gesture up taken" in charge
+                    //createGesture(direction: "up")
+                    //gesture.direction = .up
+                    swipeToShare.text = "Swipe up to share"
+                    arrow.image = #imageLiteral(resourceName: "Arrow Up")
+                    print("up")
+                }
+                print(gesture.direction)
+//                self.view.addGestureRecognizer(gesture)
+            }
     
     private var startView: UIView?
     private var dragView: UIView? {
@@ -67,38 +95,11 @@ UINavigationControllerDelegate {
         }
     }
     
-//        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//            let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
-//            if UIDevice.current.orientation.isLandscape { // test if the iphone is in landscape then gesture taking in charge will be the left one
-//                gesture.direction = .left
-//                swipeToShare.text = "Swipe left to share"
-//                arrowToShare.text = "<"
-//                print("left")
-//            }
-//            else { // or gesture up taken in charge
-//                gesture.direction = .up
-//                swipeToShare.text = "Swipe up to share"
-//                arrowToShare.text = "^"
-//                print("up")
-//            }
-//
-//            self.viewToShare.addGestureRecognizer(gesture)
-//        }
-    let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("Rotate")
-        if UIDevice.current.orientation.isPortrait {
-            print("portrait")
-            gesture.direction = .up
-            print(gesture)
-        }
-        else {
-            print("Landscape")
-            gesture.direction = .left
-            print(gesture)
-        }
-        self.viewGeneral.addGestureRecognizer(gesture)
-    }
+    
+   
+    
+    
+    
     //Mark: - Display
     
     
@@ -123,6 +124,17 @@ UINavigationControllerDelegate {
        }
     
     //MARK: - Actions
+    
+    func createGesture(direction: String) {
+    let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
+        if direction == "left" {
+            gesture.direction = .left
+        }
+        else {
+            gesture.direction = .up
+        }
+        self.view.addGestureRecognizer(gesture)
+    }
     
     
     
@@ -249,7 +261,7 @@ UINavigationControllerDelegate {
             
         default:
             //            return "other view"
-            return 1
+            return 4
         }
     }
     
