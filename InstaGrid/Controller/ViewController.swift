@@ -11,8 +11,8 @@ class ViewController: UIViewController,
     UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     
- 
-   
+    
+    
     @IBOutlet weak var swipeToShare: UILabel!               // outlet connection swipeToShare
     @IBOutlet weak var stackViewDisplay: UIStackView!       // outlet connection stackViewDisplay
     @IBOutlet weak var stackViewTop: UIStackView!           // outlet connection stackViewTop
@@ -24,9 +24,9 @@ UINavigationControllerDelegate {
     var buttonsFrameArray = [#imageLiteral(resourceName: "Layout 1"), #imageLiteral(resourceName: "Layout 2.png"), #imageLiteral(resourceName: "Layout 3")]                     // declaration array buttonsFrameArray / initialised with the three different images
     var buttonsImageArray = [#imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape")]                 // declaration array buttonsImageArray / initialised with the three different images
     var currentTag: Int = 0                                  /* declaration currentTag  / initialised at 0
-                                                             will allow to manage which button is pressed */
+     will allow to manage which button is pressed */
     var stateFrame = frameState.twoLarge                     /* declaration stateFrame depending on the enumeration frameState /
-                                                             initialised at Frame Two small images for stackViewTop and one large image for stackViewBottom */
+     initialised at Frame Two small images for stackViewTop and one large image for stackViewBottom */
     // checker le pan avec le bouton si glissé bug
     var gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))  // declaration gesture handling for the swipe between images
     
@@ -43,8 +43,8 @@ UINavigationControllerDelegate {
             view.addSubview(dragView)
         }
     }
-   
-
+    
+    
     // regarder le code
     // model: créer un ensemble d'images didset tableau
     // animation UIView.animate max 500 ms
@@ -52,14 +52,14 @@ UINavigationControllerDelegate {
     // differentes images,
     // presentation powerpoint/présentation rapport
     // gerer les views autres que Image 1, 2, 3, 4
-
-   
+    
+    
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
+        
         stackViewDisplay.addGestureRecognizer(panRecognizer)  // adds the panRecognizer to stackViewDisplay
         gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
         whichOrientation()  // calls whichOrientation method
@@ -69,55 +69,54 @@ UINavigationControllerDelegate {
         
     }
     
-
+    
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         whichOrientation()
     }
-
-   
+    
+    
     //Mark: - Display
-    
-    
     @IBAction func buttonViewPressed(_ sender: UIButton!) {  /* method handling the pressed button
-                                                             changing the frame depending on the frame choose*/
+         changing the frame depending on the frame choose*/
         if sender.tag == 1 {    /* frame Largetwo
-                                stackViewTop composed by a large image
-                                stackViewBottom composed by two small images */
+             stackViewTop composed by a large image
+             stackViewBottom composed by two small images */
             whichFrame(frame: .largeTwo) // set the frame to the expected frame(Largetwo)
             stateFrame = .largeTwo // memorised the state of the frame to LargeTwo
+            
         }
         if sender.tag == 2 {    /* frame twoLarge
-                                stackViewTop composed by two small images
-                                stackViewBottom composed by a large image */
+             stackViewTop composed by two small images
+             stackViewBottom composed by a large image */
             whichFrame(frame: .twoLarge) // set the frame to the expected frame(twoLarge)
             stateFrame = .twoLarge // memorised the state of the frame to TwoLarge
         }
         if sender.tag == 3 {    /* frame twoTwo
-                                stackViewTop composed by two small images
-                                stackViewBottom composed by two small images */
+             stackViewTop composed by two small images
+             stackViewBottom composed by two small images */
             whichFrame(frame: .twoTwo) // set the frame to the expected frame(twoTwo)
             stateFrame = .twoTwo // memorised the state of the frame to TwoTwo
         }
-
-       }
+        
+    }
     
     //MARK: - Actions
     
-//    func createGesture(direction: String) {
-//
-//
-//        gesture.direction = .left
-//        gesture.direction = .up
-//
-////        if direction == "left" {
-////            gesture.direction = .left
-////        }
-////        else {
-////            gesture.direction = .up
-////        }
-//        self.view.addGestureRecognizer(gesture)
-//    }
+    //    func createGesture(direction: String) {
+    //
+    //
+    //        gesture.direction = .left
+    //        gesture.direction = .up
+    //
+    ////        if direction == "left" {
+    ////            gesture.direction = .left
+    ////        }
+    ////        else {
+    ////            gesture.direction = .up
+    ////        }
+    //        self.view.addGestureRecognizer(gesture)
+    //    }
     
     
     
@@ -125,8 +124,8 @@ UINavigationControllerDelegate {
         
         setUIImagePickerController()
         currentTag = sender.tag
-       
-
+        
+        
     }
     
     @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
@@ -143,17 +142,17 @@ UINavigationControllerDelegate {
             // Remember the start view
             
             startView = touchView
-           
-                                    // Create a "copy" do move along the pan
+            
+            // Create a "copy" do move along the pan
             guard let dragView = touchView.snapshotView(afterScreenUpdates: false) else {
-                                    // If creating a copy fails, let the gesture recognizer reset
-
+                // If creating a copy fails, let the gesture recognizer reset
+                
                 recognizer.isEnabled = true
                 
                 return
             }
             dragView.alpha = 1
-                                    // Put the copy right under the touch point
+            // Put the copy right under the touch point
             
             dragView.center = recognizer.location(in: viewGeneral)
             
@@ -171,7 +170,7 @@ UINavigationControllerDelegate {
             // Put the copy right under the touch point
             dragView?.center = recognizer.location(in: viewGeneral)
             dragView?.frame = dragView!.frame.offsetBy(dx: 0 , dy: stackViewDisplay.frame.height)
-
+            
             
             
         case .ended:
@@ -189,7 +188,7 @@ UINavigationControllerDelegate {
             let endImageIndex = whichView(touchView)
             
             inverseImage(startImage: startImageIndex, endImage: endImageIndex)
-           
+            
             whichFrame(frame: stateFrame)
             
             
@@ -203,7 +202,7 @@ UINavigationControllerDelegate {
     }
     
     
-
+    
     
     func analyze(recognizer: UIPanGestureRecognizer) -> UIView? {
         let touchPoint = recognizer.location(in: recognizer.view)
@@ -219,22 +218,19 @@ UINavigationControllerDelegate {
         return hitView
     }
     
-    func whichView(_ view: UIView) -> Int {
+    func whichView(_ view: UIView) -> Int {   /* method checks the view touched and returns an int corresponding to
+         the index in buttonsImageArray */
         switch view {
-        case stackViewTop.viewWithTag(1):
-            //print("StackViewTop element 1")
+        case stackViewTop.viewWithTag(1): // case the first buttons image is selected
             return 0
             
-        case stackViewTop.viewWithTag(2):
-            //print("StackViewTop element 2")
+        case stackViewTop.viewWithTag(2): // case the second buttons image is selected
             return 1
             
-        case stackViewBottom.viewWithTag(3):
-            //print("StackViewBottom element 1")
+        case stackViewBottom.viewWithTag(3): // case the third buttons image is selected
             return 2
             
-        case stackViewBottom.viewWithTag(4):
-            //print("StackViewBottom element 2")
+        case stackViewBottom.viewWithTag(4): // case the fourth buttons image is selected
             return 3
             
         default:
@@ -246,17 +242,14 @@ UINavigationControllerDelegate {
     
     func inverseImage(startImage: Int ,endImage: Int) {
         
-   
-    let firstImage = buttonsImageArray[startImage]
-    let lastImage = buttonsImageArray[endImage]
-    
-    buttonsImageArray[endImage] = firstImage
-    buttonsImageArray[startImage] = lastImage
-      
-//    print(lastImage)
-//    print(firstImage)
-//        print(whichFrame(frame: stateFrame))
-//    whichFrame(frame: stateFrame) // cela fonctionne mais faire le refresh avec le tableau d'images
+        
+        let firstImage = buttonsImageArray[startImage]
+        let lastImage = buttonsImageArray[endImage]
+        
+        buttonsImageArray[endImage] = firstImage
+        buttonsImageArray[startImage] = lastImage
+        
+        
     }
     
     @objc func shareFrame() {
@@ -264,26 +257,28 @@ UINavigationControllerDelegate {
         present(activityViewController, animated: true,completion: nil)
     }
     
-   
+    
     
     func createButtons(button number: Int) -> UIButton { // creates four buttons from tag 0 - 3
         
         
-        let button = UIButton()
+//        let button = UIButton()
+        let button = BounceButton()
         
         button.backgroundColor = .white
         button.setImage(buttonsImageArray[number - 1], for: .normal)
         button.imageView!.contentMode = .scaleAspectFill
         button.tag = number
         button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside)
-            
-       return button
-      
+        
+        return button
+        
     }
     
     func createViewButtons(buttonChoice number: Int) -> UIButton { // creates three buttons from tag 0 - 2
-
-        let button = UIButton()
+        
+//        let button = UIButton()
+        let button = BounceButton()
         
         
         button.setBackgroundImage(buttonsFrameArray[number - 1], for: .normal)
@@ -291,12 +286,12 @@ UINavigationControllerDelegate {
         button.tag = number
         button.addTarget(self, action: #selector(buttonViewPressed), for: .touchUpInside)
         
-            
-          return button
+        
+        return button
     }
     
-
-   
+    
+    
     func setViewLargeTwo() {
         
         let buttonSelected = createViewButtons(buttonChoice: 1)
@@ -307,7 +302,7 @@ UINavigationControllerDelegate {
         
     }
     func setViewTwoLarge() {
-       
+        
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 1))
         let buttonSelected = createViewButtons(buttonChoice: 2)
         buttonSelected.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
@@ -316,7 +311,7 @@ UINavigationControllerDelegate {
         
     }
     func setViewTwoTwo() {
-       
+        
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 1))
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 2))
         let buttonSelected = createViewButtons(buttonChoice: 3)
@@ -344,8 +339,8 @@ UINavigationControllerDelegate {
         
         if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             buttonsImageArray[currentTag - 1] = chosenImage
-           }
-
+        }
+        
         whichFrame(frame: stateFrame)
         dismiss(animated:true, completion: nil) //5
         
@@ -353,13 +348,16 @@ UINavigationControllerDelegate {
     
     //MARK: StackView handling
     
+   
+    
     fileprivate func setStackViewLargeTwo() {
         // call resetStackView method
-      
-
+        
+        
         stackViewTop.addArrangedSubview(createButtons(button: 1)) // adds the button to the stackViewTop in position One
         stackViewBottom.addArrangedSubview(createButtons(button: 3)) // adds the button to the stackViewBottom in position three
         stackViewBottom.addArrangedSubview(createButtons(button: 4)) // adds the button to the stackViewBottom in position four
+        
     }
     
     fileprivate func setStackViewTwoLarge() {       // call resetStackView method
@@ -367,20 +365,22 @@ UINavigationControllerDelegate {
         stackViewTop.addArrangedSubview(createButtons(button: 1)) // adds the button to the stackViewTop in position One
         stackViewTop.addArrangedSubview(createButtons(button: 2)) // adds the button to the stackViewTop in position Two
         stackViewBottom.addArrangedSubview(createButtons(button: 3)) // adds the button to the stackViewBottom in position three
+        
     }
     
     fileprivate func setStackViewTwoTwo() {     // call resetStackView method
         
-      
+        
         stackViewTop.addArrangedSubview(createButtons(button: 1)) // adds the button to the stackViewTop in position One
         stackViewTop.addArrangedSubview(createButtons(button: 2)) // adds the button to the stackViewTop in position One
         stackViewBottom.addArrangedSubview(createButtons(button: 3)) // adds the button to the stackViewBottom in position Three
         stackViewBottom.addArrangedSubview(createButtons(button: 4)) // adds the button to the stackViewBottom in position Four
-       
-       
+        
+        
+        
     }
     
-  
+    
     
     fileprivate func resetStackViewFrame() { // reset the stackView content to none
         
