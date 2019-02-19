@@ -13,76 +13,25 @@ UINavigationControllerDelegate {
     
  
    
-    @IBOutlet weak var swipeToShare: UILabel!
-
-    @IBOutlet weak var arrow: UIImageView!
-    @IBOutlet weak var stackViewDisplay: UIStackView!
-    @IBOutlet weak var stackViewTop: UIStackView!
-    @IBOutlet weak var stackViewBottom: UIStackView!
-    @IBOutlet weak var stackViewButtons: UIStackView!
-    @IBOutlet weak var viewGeneral: UIView!
-    @IBOutlet var panRecognizer: UIPanGestureRecognizer!
+    @IBOutlet weak var swipeToShare: UILabel!               // outlet connection swipeToShare
+    @IBOutlet weak var stackViewDisplay: UIStackView!       // outlet connection stackViewDisplay
+    @IBOutlet weak var stackViewTop: UIStackView!           // outlet connection stackViewTop
+    @IBOutlet weak var stackViewBottom: UIStackView!        // outlet connection stackViewBottom
+    @IBOutlet weak var stackViewButtons: UIStackView!       // outlet connection stackViewButtons
+    @IBOutlet weak var viewGeneral: UIView!                 // outlet connection viewGeneral
+    @IBOutlet var panRecognizer: UIPanGestureRecognizer!    // outlet connection panRecognizer
     
-    var buttonsFrameArray = [#imageLiteral(resourceName: "Layout 1"), #imageLiteral(resourceName: "Layout 2.png"), #imageLiteral(resourceName: "Layout 3")]
-    var buttonsImageArray = [#imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape")]
-    // var viewButtonsArray = [UIButton]()
-    var currentTag: Int = 0
-    var stateFrame = frameState.twoLarge
+    var buttonsFrameArray = [#imageLiteral(resourceName: "Layout 1"), #imageLiteral(resourceName: "Layout 2.png"), #imageLiteral(resourceName: "Layout 3")]                     // declaration array buttonsFrameArray / initialised with the three different images
+    var buttonsImageArray = [#imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape")]                 // declaration array buttonsImageArray / initialised with the three different images
+    var currentTag: Int = 0                                  /* declaration currentTag  / initialised at 0
+                                                             will allow to manage which button is pressed */
+    var stateFrame = frameState.twoLarge                     /* declaration stateFrame depending on the enumeration frameState /
+                                                             initialised at Frame Two small images for stackViewTop and one large image for stackViewBottom */
     // checker le pan avec le bouton si glissé bug
-     let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
+    var gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))  // declaration gesture handling for the swipe between images
     
-    // enum pour les checked button frame choix
-   
-
-    
-
-   
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        //createButtons() // creates the four buttons so they can by added later in the two different stackView
-                        // stackViewTop will contain maximum two
-                        // stackViewBottom will contain maximum two
-                        // it will depend on the type of the frame shown
-        
-//        setViewTwoLarge()
-//
-       
-        stackViewDisplay.addGestureRecognizer(panRecognizer)
-        createGesture(direction: "up")
-        whichFrame(frame: .twoLarge)
-        
-    }
-    
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        print("Rotate")
-//        swipeToShare.text = "Swipe left to share"
-//        arrow.image = #imageLiteral(resourceName: "Arrow Left")
-//        gesture.direction = .left
-//    }
-    
-            override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//                let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
-                if UIDevice.current.orientation.isLandscape { // test if the iphone is in landscape then gesture taking in charge will be the left one
-                    createGesture(direction: "left")
-                    //gesture.direction = .left
-                    swipeToShare.text = "Swipe left to share"
-                    arrow.image = #imageLiteral(resourceName: "Arrow Left")
-                    print("left")
-                }
-                else { // or gesture up taken" in charge
-                    //createGesture(direction: "up")
-                    //gesture.direction = .up
-                    swipeToShare.text = "Swipe up to share"
-                    arrow.image = #imageLiteral(resourceName: "Arrow Up")
-                    print("up")
-                }
-                print(gesture.direction)
-//                self.view.addGestureRecognizer(gesture)
-            }
-    
-    private var startView: UIView?
-    private var dragView: UIView? {
+    private var startView: UIView?      // declaration startView first view to be touched
+    private var dragView: UIView? {     // declaration dragView view which is going to be dragged
         willSet {
             dragView?.removeFromSuperview()
         }
@@ -94,6 +43,39 @@ UINavigationControllerDelegate {
             view.addSubview(dragView)
         }
     }
+   
+
+    // regarder le code
+    // model: créer un ensemble d'images didset tableau
+    // animation UIView.animate max 500 ms
+    // commenter
+    // differentes images,
+    // presentation powerpoint/présentation rapport
+
+   
+    
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+       
+        stackViewDisplay.addGestureRecognizer(panRecognizer)  // adds the panRecognizer to stackViewDisplay
+        gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
+        whichOrientation()  // calls whichOrientation method
+        self.view.addGestureRecognizer(gesture) // adds the gesture to the view
+        
+        whichFrame(frame: .twoLarge) // calls whichFrame method and sets the frame
+        
+    }
+    
+
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        whichOrientation()
+    }
+
+    
+  
     
     
    
@@ -106,18 +88,15 @@ UINavigationControllerDelegate {
     @IBAction func buttonViewPressed(_ sender: UIButton!) {
         
         if sender.tag == 1 {
-            //print("sender egale 1")
             whichFrame(frame: .largeTwo)
             stateFrame = .largeTwo
         }
         if sender.tag == 2 {
-            //print("sender egale 2")
             whichFrame(frame: .twoLarge)
             stateFrame = .twoLarge
         }
         if sender.tag == 3 {
-            //print("sender egale 3")
-             whichFrame(frame: .twoTwo)
+            whichFrame(frame: .twoTwo)
             stateFrame = .twoTwo
         }
 
@@ -125,16 +104,20 @@ UINavigationControllerDelegate {
     
     //MARK: - Actions
     
-    func createGesture(direction: String) {
-    let gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))
-        if direction == "left" {
-            gesture.direction = .left
-        }
-        else {
-            gesture.direction = .up
-        }
-        self.view.addGestureRecognizer(gesture)
-    }
+//    func createGesture(direction: String) {
+//
+//
+//        gesture.direction = .left
+//        gesture.direction = .up
+//
+////        if direction == "left" {
+////            gesture.direction = .left
+////        }
+////        else {
+////            gesture.direction = .up
+////        }
+//        self.view.addGestureRecognizer(gesture)
+//    }
     
     
     
@@ -446,6 +429,17 @@ UINavigationControllerDelegate {
            
             setStackViewTwoLarge() // set stackView top and bottom (Two small images/ One large image)
             setViewTwoLarge()
+        }
+    }
+    
+    fileprivate func whichOrientation() {
+        if UIDevice.current.orientation.isLandscape {    // test if the device is on landscape
+            gesture.direction = .left                        // set the gesture direction to left handling
+            swipeToShare.text = "Swipe left to share"
+        }
+        else {
+            gesture.direction = .up         // set the gesture direction to up handling
+            swipeToShare.text = "Swipe up to share"
         }
     }
     
