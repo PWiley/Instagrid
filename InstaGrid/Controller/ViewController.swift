@@ -51,6 +51,7 @@ UINavigationControllerDelegate {
     // commenter
     // differentes images,
     // presentation powerpoint/présentation rapport
+    // gerer les views autres que Image 1, 2, 3, 4
 
    
     
@@ -74,30 +75,29 @@ UINavigationControllerDelegate {
         whichOrientation()
     }
 
-    
-  
-    
-    
    
-    
-    
-    
     //Mark: - Display
     
     
-    @IBAction func buttonViewPressed(_ sender: UIButton!) {
-        
-        if sender.tag == 1 {
-            whichFrame(frame: .largeTwo)
-            stateFrame = .largeTwo
+    @IBAction func buttonViewPressed(_ sender: UIButton!) {  /* method handling the pressed button
+                                                             changing the frame depending on the frame choose*/
+        if sender.tag == 1 {    /* frame Largetwo
+                                stackViewTop composed by a large image
+                                stackViewBottom composed by two small images */
+            whichFrame(frame: .largeTwo) // set the frame to the expected frame(Largetwo)
+            stateFrame = .largeTwo // memorised the state of the frame to LargeTwo
         }
-        if sender.tag == 2 {
-            whichFrame(frame: .twoLarge)
-            stateFrame = .twoLarge
+        if sender.tag == 2 {    /* frame twoLarge
+                                stackViewTop composed by two small images
+                                stackViewBottom composed by a large image */
+            whichFrame(frame: .twoLarge) // set the frame to the expected frame(twoLarge)
+            stateFrame = .twoLarge // memorised the state of the frame to TwoLarge
         }
-        if sender.tag == 3 {
-            whichFrame(frame: .twoTwo)
-            stateFrame = .twoTwo
+        if sender.tag == 3 {    /* frame twoTwo
+                                stackViewTop composed by two small images
+                                stackViewBottom composed by two small images */
+            whichFrame(frame: .twoTwo) // set the frame to the expected frame(twoTwo)
+            stateFrame = .twoTwo // memorised the state of the frame to TwoTwo
         }
 
        }
@@ -131,8 +131,7 @@ UINavigationControllerDelegate {
     
     @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
-        case .began:
-            //state("began")
+        case .began:                 // state("began")
             
             // Get view where interaction did start
             guard let touchView = analyze(recognizer: recognizer)
@@ -144,39 +143,35 @@ UINavigationControllerDelegate {
             // Remember the start view
             
             startView = touchView
-            //print(startView)
-            
-            // Create a "copy" do move along the pan
+           
+                                    // Create a "copy" do move along the pan
             guard let dragView = touchView.snapshotView(afterScreenUpdates: false) else {
-                // If creating a copy fails, let the gesture recognizer reset
-//                recognizer.isEnabled = false
+                                    // If creating a copy fails, let the gesture recognizer reset
+
                 recognizer.isEnabled = true
                 
                 return
             }
             dragView.alpha = 1
-            // Put the copy right under the touch point
-            //            dragView.center = recognizer.location(in: recognizer.view)
+                                    // Put the copy right under the touch point
+            
             dragView.center = recognizer.location(in: viewGeneral)
-            //dragView.frame = dragView.frame.offsetBy(dx: 0, dy: 30)
+            
             
             // Save it for later
             self.dragView = dragView
             
-        case .failed:
-            //state("failed")
+        case .failed:           //state("failed")
             
             startView = nil
             dragView = nil
             
-        case .changed:
-            //state("changed")
+        case .changed:          // state("changed")
             
             // Put the copy right under the touch point
             dragView?.center = recognizer.location(in: viewGeneral)
             dragView?.frame = dragView!.frame.offsetBy(dx: 0 , dy: stackViewDisplay.frame.height)
-//            let transformation = CGAffineTransform(translationX: recognizer.translation(in: stackViewDisplay).x, y: recognizer.translation(in: stackViewDisplay).y + 200)
-//            dragView?.transform = transformation
+
             
             
         case .ended:
@@ -364,14 +359,14 @@ UINavigationControllerDelegate {
 
         stackViewTop.addArrangedSubview(createButtons(button: 1)) // adds the button to the stackViewTop in position One
         stackViewBottom.addArrangedSubview(createButtons(button: 3)) // adds the button to the stackViewBottom in position three
-        stackViewBottom.addArrangedSubview(createButtons(button: 4))
+        stackViewBottom.addArrangedSubview(createButtons(button: 4)) // adds the button to the stackViewBottom in position four
     }
     
     fileprivate func setStackViewTwoLarge() {       // call resetStackView method
         
         stackViewTop.addArrangedSubview(createButtons(button: 1)) // adds the button to the stackViewTop in position One
         stackViewTop.addArrangedSubview(createButtons(button: 2)) // adds the button to the stackViewTop in position Two
-        stackViewBottom.addArrangedSubview(createButtons(button: 3))
+        stackViewBottom.addArrangedSubview(createButtons(button: 3)) // adds the button to the stackViewBottom in position three
     }
     
     fileprivate func setStackViewTwoTwo() {     // call resetStackView method
@@ -381,7 +376,7 @@ UINavigationControllerDelegate {
         stackViewTop.addArrangedSubview(createButtons(button: 2)) // adds the button to the stackViewTop in position One
         stackViewBottom.addArrangedSubview(createButtons(button: 3)) // adds the button to the stackViewBottom in position Three
         stackViewBottom.addArrangedSubview(createButtons(button: 4)) // adds the button to the stackViewBottom in position Four
-        // fin test
+       
        
     }
     
@@ -415,18 +410,12 @@ UINavigationControllerDelegate {
         
         switch frame {
         case .twoTwo:
-            //print("Lots of planets have a north")
-            
             setStackViewTwoTwo() // set stackView top and bottom (Two small images/ Two small images)
             setViewTwoTwo()
         case .largeTwo:
-            //print("Watch out for penguins")
-            
             setStackViewLargeTwo() // set stackView top and bottom (One large image/ Two small images)
             setViewLargeTwo()
         case .twoLarge:
-            //print("Where the sun rises")
-           
             setStackViewTwoLarge() // set stackView top and bottom (Two small images/ One large image)
             setViewTwoLarge()
         }
@@ -434,12 +423,12 @@ UINavigationControllerDelegate {
     
     fileprivate func whichOrientation() {
         if UIDevice.current.orientation.isLandscape {    // test if the device is on landscape
-            gesture.direction = .left                        // set the gesture direction to left handling
-            swipeToShare.text = "Swipe left to share"
+            gesture.direction = .left                    // set the gesture direction to left handling
+            swipeToShare.text = "Swipe left to share"    // set the title to Swipe left to share
         }
         else {
-            gesture.direction = .up         // set the gesture direction to up handling
-            swipeToShare.text = "Swipe up to share"
+            gesture.direction = .up                      // set the gesture direction to up handling
+            swipeToShare.text = "Swipe up to share"      // set the title to Swipe up to share
         }
     }
     
