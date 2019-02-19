@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA0CB64D21C3EFE5008FDBEB /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA0CB64C21C3EFE5008FDBEB /* Delm-Medium.otf */; };
 		DA0CB64F21C3F0DB008FDBEB /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA0CB64E21C3F0DB008FDBEB /* ThirstySoftRegular.otf */; };
+		DA343536221CB5110050B9D4 /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA343535221CB5110050B9D4 /* BounceButton.swift */; };
 		DACEED2821C2B5AF00770E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEED2721C2B5AF00770E81 /* AppDelegate.swift */; };
 		DACEED2A21C2B5AF00770E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEED2921C2B5AF00770E81 /* ViewController.swift */; };
 		DACEED2D21C2B5AF00770E81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DACEED2B21C2B5AF00770E81 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		DA0CB64C21C3EFE5008FDBEB /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		DA0CB64E21C3F0DB008FDBEB /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		DA343535221CB5110050B9D4 /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
 		DACEED2421C2B5AF00770E81 /* InstaGrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaGrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACEED2721C2B5AF00770E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DACEED2921C2B5AF00770E81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				DACEED2921C2B5AF00770E81 /* ViewController.swift */,
+				DA343535221CB5110050B9D4 /* BounceButton.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			files = (
 				DACEED2A21C2B5AF00770E81 /* ViewController.swift in Sources */,
 				DACEED2821C2B5AF00770E81 /* AppDelegate.swift in Sources */,
+				DA343536221CB5110050B9D4 /* BounceButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
