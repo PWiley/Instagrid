@@ -9,17 +9,22 @@
 /* Begin PBXBuildFile section */
 		DA0CB64D21C3EFE5008FDBEB /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA0CB64C21C3EFE5008FDBEB /* Delm-Medium.otf */; };
 		DA0CB64F21C3F0DB008FDBEB /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA0CB64E21C3F0DB008FDBEB /* ThirstySoftRegular.otf */; };
+		DA2590E92223E9DE00853CA2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2590E82223E9DE00853CA2 /* Extensions.swift */; };
+		DA2590EB2223EAC500853CA2 /* FrameHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2590EA2223EAC500853CA2 /* FrameHandling.swift */; };
 		DA343536221CB5110050B9D4 /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA343535221CB5110050B9D4 /* BounceButton.swift */; };
 		DACEED2821C2B5AF00770E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEED2721C2B5AF00770E81 /* AppDelegate.swift */; };
 		DACEED2A21C2B5AF00770E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEED2921C2B5AF00770E81 /* ViewController.swift */; };
 		DACEED2D21C2B5AF00770E81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DACEED2B21C2B5AF00770E81 /* Main.storyboard */; };
 		DACEED2F21C2B5B300770E81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DACEED2E21C2B5B300770E81 /* Assets.xcassets */; };
 		DACEED3221C2B5B300770E81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DACEED3021C2B5B300770E81 /* LaunchScreen.storyboard */; };
+		DADA65902222767F00610AA1 /* ImageHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA658F2222767F00610AA1 /* ImageHandling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DA0CB64C21C3EFE5008FDBEB /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		DA0CB64E21C3F0DB008FDBEB /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		DA2590E82223E9DE00853CA2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DA2590EA2223EAC500853CA2 /* FrameHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHandling.swift; sourceTree = "<group>"; };
 		DA343535221CB5110050B9D4 /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
 		DACEED2421C2B5AF00770E81 /* InstaGrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaGrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACEED2721C2B5AF00770E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +33,7 @@
 		DACEED2E21C2B5B300770E81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DACEED3121C2B5B300770E81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DACEED3321C2B5B300770E81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DADA658F2222767F00610AA1 /* ImageHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			children = (
 				DACEED2921C2B5AF00770E81 /* ViewController.swift */,
 				DA343535221CB5110050B9D4 /* BounceButton.swift */,
+				DA2590E82223E9DE00853CA2 /* Extensions.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -88,6 +95,8 @@
 		DACEED3B21C2B5E800770E81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DADA658F2222767F00610AA1 /* ImageHandling.swift */,
+				DA2590EA2223EAC500853CA2 /* FrameHandling.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,8 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA2590E92223E9DE00853CA2 /* Extensions.swift in Sources */,
 				DACEED2A21C2B5AF00770E81 /* ViewController.swift in Sources */,
+				DADA65902222767F00610AA1 /* ImageHandling.swift in Sources */,
 				DACEED2821C2B5AF00770E81 /* AppDelegate.swift in Sources */,
+				DA2590EB2223EAC500853CA2 /* FrameHandling.swift in Sources */,
 				DA343536221CB5110050B9D4 /* BounceButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
