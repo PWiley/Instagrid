@@ -9,7 +9,12 @@
 import Foundation
 
 
+class FrameHandling {
+    
+var stateFrame = frameState.twoLarge                     /* declaration stateFrame depending on the enumeration frameState  initialised 
+                                                           at Frame Two small images for stackViewTop and one large image for stackViewBottom */
 
+}
 
 
 enum frameState {

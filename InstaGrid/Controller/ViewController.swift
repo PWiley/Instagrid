@@ -12,8 +12,6 @@ class ViewController: UIViewController,
     UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     
-    
-    
     @IBOutlet weak var swipeToShare: UILabel!               // outlet connection swipeToShare
     @IBOutlet weak var stackViewDisplay: UIStackView!       // outlet connection stackViewDisplay
     @IBOutlet weak var stackViewTop: UIStackView!           // outlet connection stackViewTop
@@ -22,15 +20,13 @@ UINavigationControllerDelegate {
     @IBOutlet weak var viewGeneral: UIView!                 // outlet connection viewGeneral
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!    // outlet connection panRecognizer
     
-    var buttonsFrameArray = [#imageLiteral(resourceName: "Layout 1"), #imageLiteral(resourceName: "Layout 2.png"), #imageLiteral(resourceName: "Layout 3")]                     // declaration array buttonsFrameArray / initialised with the three different images
-    var buttonsImageArray = [#imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape"), #imageLiteral(resourceName: "Combined Shape")]                 // declaration array buttonsImageArray / initialised with the three different images
     var currentTag: Int = 0                                  /* declaration currentTag  / initialised at 0
-     will allow to manage which button is pressed */
-    var stateFrame = frameState.twoLarge                     /* declaration stateFrame depending on the enumeration frameState /
-     initialised at Frame Two small images for stackViewTop and one large image for stackViewBottom */
-    // checker le pan avec le bouton si glissé bug
+                                                                will allow to manage which button is pressed */
+
     var gesture = UISwipeGestureRecognizer(target : self, action : #selector(shareFrame))  // declaration gesture handling for the swipe between images
     
+    let frameDisplay = FrameHandling()
+    let imageHandling = ImageHandling()
     
     private var startView: UIView?      // declaration startView first view to be touched
     private var dragView: UIView? {     // declaration dragView view which is going to be dragged
@@ -90,15 +86,15 @@ UINavigationControllerDelegate {
                                                                 changing the frame depending on the frame choose */
         if sender.tag == 1 {    /* frame largeTwo   stackViewTop composed by a large image/ stackViewBottom composed by two small images */
             whichFrame(frame: .largeTwo) // set the frame to the expected frame(Largetwo)
-            stateFrame = .largeTwo // memorised the state of the frame to LargeTwo
+            frameDisplay.stateFrame = .largeTwo // memorised the state of the frame to LargeTwo
         }
         if sender.tag == 2 {    /* frame twoLarge   stackViewTop composed by two small images/  stackViewBottom composed by a large image */
             whichFrame(frame: .twoLarge) // set the frame to the expected frame(twoLarge)
-            stateFrame = .twoLarge // memorised the state of the frame to TwoLarge
+            frameDisplay.stateFrame = .twoLarge // memorised the state of the frame to TwoLarge
         }
         if sender.tag == 3 {    /* frame twoTwo     stackViewTop composed by two small images/ stackViewBottom composed by two small images */
             whichFrame(frame: .twoTwo) // set the frame to the expected frame(twoTwo)
-            stateFrame = .twoTwo // memorised the state of the frame to TwoTwo
+            frameDisplay.stateFrame = .twoTwo // memorised the state of the frame to TwoTwo
         }
     }
     
@@ -131,6 +127,7 @@ UINavigationControllerDelegate {
                 else {
                     return
             }
+            
             if whichView(touchView) != 4 { // test if the view touched is one of the view(Image) swipable
             startView = touchView // Remember the start view
             guard let dragView = touchView.snapshotView(afterScreenUpdates: false) else { // Create a "copy" do move along the pan
@@ -140,26 +137,28 @@ UINavigationControllerDelegate {
             dragView.alpha = 1
             dragView.center = recognizer.location(in: viewGeneral) // Put the copy right under the touch point
             self.dragView = dragView // Save it for later
-            
             }
+                
             else {
                 startView = nil
                 dragView = nil
             }
-            // test si whichView != 4 => return
             
         case .failed:           //state("failed")
-            
             startView = nil
             dragView = nil
             
         case .changed:          // state("changed")
-            
             dragView?.center = recognizer.location(in: viewGeneral) // Put the copy right under the touch point
+            
+            if UIDevice.current.orientation.isPortrait{
             dragView?.frame = dragView!.frame.offsetBy(dx: 0 , dy: stackViewDisplay.frame.height)
+            }
+            else {
+            dragView?.frame = dragView!.frame.offsetBy(dx: stackViewDisplay.frame.height , dy: 0)
+            }
             
         case .ended:
-            
             defer { // Forget the stored values when this case ends
                 startView = nil
                 dragView = nil
@@ -172,8 +171,8 @@ UINavigationControllerDelegate {
             if whichView(startView) != 4 && whichView(touchView) != 4 { // check if the startView or the touchView is one of the allowed views
                 let startImageIndex = whichView(startView) // gives the index of the first selected view
                 let endImageIndex = whichView(touchView) // gives the index of the last selected view
-                inverseImage(startImage: startImageIndex, endImage: endImageIndex) // call the method inverseImage
-                whichFrame(frame: stateFrame) // set the frame with the new images swiped
+                imageHandling.inverseImage(startImage: startImageIndex, endImage: endImageIndex) // call the method inverseImage
+                whichFrame(frame: frameDisplay.stateFrame) // set the frame with the new images swiped
             }
            
         default: // state("something strange happend")
@@ -184,7 +183,7 @@ UINavigationControllerDelegate {
     }
     
     
-    fileprivate func analyze(recognizer: UIPanGestureRecognizer) -> UIView? { // handles the view selected by the touch action
+    func analyze(recognizer: UIPanGestureRecognizer) -> UIView? { // handles the view selected by the touch action
         let touchPoint = recognizer.location(in: recognizer.view) // declaration of the touchPoint, value for having the view where the touchPoint is placed
         
         guard let recognizerAttachedToView = recognizer.view else {
@@ -198,7 +197,7 @@ UINavigationControllerDelegate {
         return hitView
     }
     
-    fileprivate func whichView(_ view: UIView) -> Int {   /* method checks the view touched and returns an int corresponding to
+    func whichView(_ view: UIView) -> Int {   /* method checks the view touched and returns an int corresponding to
          the index in buttonsImageArray */
         switch view {
         case stackViewTop.viewWithTag(1): // case the first buttons image is selected
@@ -219,29 +218,12 @@ UINavigationControllerDelegate {
         }
     }
     
-    // a mettre ds le model
-    fileprivate func inverseImage(startImage: Int ,endImage: Int) { // it manage the switch of the two images(First selected and the second)
-        
-        
-        let firstImage = buttonsImageArray[startImage] // declaration of the firstImage set to the image from buttonsImagearray at the index startImage
-        let lastImage = buttonsImageArray[endImage] // declaration of the lastImage set to the image from buttonsImageArray at the index lastImage
-        
-        buttonsImageArray[endImage] = firstImage // switch
-        buttonsImageArray[startImage] = lastImage // switch
-        
-        
-    }
-    
-    
-    
-    
-    
     func createButtons(button number: Int) -> UIButton { // creates four buttons from tag 0 - 3
         
         let button = BounceButton() // creates an instance of BounceButton
         
         button.backgroundColor = .white // set backgroundColor to white
-        button.setImage(buttonsImageArray[number - 1], for: .normal) // set the image from the buttonsImageArray at index (number - 1)
+        button.setImage(imageHandling.buttonsImageArray[number - 1], for: .normal) // set the image from the buttonsImageArray at index (number - 1)
         button.imageView!.contentMode = .scaleAspectFill // set the contentMode at scaleAspectFill
         button.tag = number // set button.tag at the value number
         button.addTarget(self, action: #selector(buttonAddImagePressed), for: .touchUpInside) // add the action to that button
@@ -254,7 +236,7 @@ UINavigationControllerDelegate {
         
         let button = BounceButton() // creates an instance of BounceButton
         
-        button.setBackgroundImage(buttonsFrameArray[number - 1], for: .normal) // set the image from the buttonsImageArray at index (number - 1)
+        button.setBackgroundImage(imageHandling.buttonsFrameArray[number - 1], for: .normal) // set the image from the buttonsImageArray at index (number - 1)
         button.imageView!.contentMode = .scaleAspectFill // set the contentMode at scaleAspectFill
         button.tag = number // set button.tag at the value number
         button.addTarget(self, action: #selector(buttonViewPressed), for: .touchUpInside) // add the action to that button
@@ -263,9 +245,7 @@ UINavigationControllerDelegate {
         return button
     }
     
-    
-    
-    fileprivate func setViewLargeTwo() { // displays frame Large and two smalls
+    func setViewLargeTwo() { // displays frame Large and two smalls
         
         let buttonSelected = createViewButtons(buttonChoice: 1)
         buttonSelected.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
@@ -274,7 +254,7 @@ UINavigationControllerDelegate {
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 3))
         
     }
-    fileprivate func setViewTwoLarge() {
+    func setViewTwoLarge() {
         
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 1))
         let buttonSelected = createViewButtons(buttonChoice: 2)
@@ -283,7 +263,8 @@ UINavigationControllerDelegate {
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 3))
         
     }
-    fileprivate func setViewTwoTwo() {
+    
+    func setViewTwoTwo() {
         
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 1))
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 2))
@@ -292,6 +273,9 @@ UINavigationControllerDelegate {
         stackViewButtons.addArrangedSubview(buttonSelected)
         
     }
+    
+    
+    //MARK: UIImagePickerController
     
     func setUIImagePickerController() {
         let picker = UIImagePickerController() // UIImagePickerController is a view controller that lets a user pick media from their photo library.
@@ -302,7 +286,6 @@ UINavigationControllerDelegate {
         picker.modalPresentationStyle = UIModalPresentationStyle.currentContext // allows the landscape view
         present(picker, animated: true, completion: nil)
     }
-    //MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -311,33 +294,29 @@ UINavigationControllerDelegate {
     @objc func imagePickerController(_ picker: UIImagePickerController,
                                      didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         
-        if let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            buttonsImageArray[currentTag - 1] = chosenImage
+        if let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage { // if the chosen image is modified
+            imageHandling.buttonsImageArray[currentTag - 1] = chosenImage
         }
-        else if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            buttonsImageArray[currentTag - 1] = chosenImage
+        else if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage { // if the chosen image is the opriginal one
+            imageHandling.buttonsImageArray[currentTag - 1] = chosenImage
         }
         
-        whichFrame(frame: stateFrame)
+        whichFrame(frame: frameDisplay.stateFrame)
         dismiss(animated:true, completion: nil) //5
         
     }
     
     //MARK: StackView handling
-    
-    
-    
-    fileprivate func setStackViewLargeTwo() {
-        // call resetStackView method
-        
-        
+   
+    func setStackViewLargeTwo() {      // call resetStackView method
+       
         stackViewTop.addArrangedSubview(createButtons(button: 1)) // adds the button to the stackViewTop in position One
         stackViewBottom.addArrangedSubview(createButtons(button: 3)) // adds the button to the stackViewBottom in position three
         stackViewBottom.addArrangedSubview(createButtons(button: 4)) // adds the button to the stackViewBottom in position four
         
     }
     
-    fileprivate func setStackViewTwoLarge() {       // call resetStackView method
+    func setStackViewTwoLarge() {       // call resetStackView method
         
         stackViewTop.addArrangedSubview(createButtons(button: 1)) // adds the button to the stackViewTop in position One
         stackViewTop.addArrangedSubview(createButtons(button: 2)) // adds the button to the stackViewTop in position Two
@@ -345,7 +324,7 @@ UINavigationControllerDelegate {
         
     }
     
-    fileprivate func setStackViewTwoTwo() {     // call resetStackView method
+    func setStackViewTwoTwo() {     // call resetStackView method
         
         
         stackViewTop.addArrangedSubview(createButtons(button: 1)) // adds the button to the stackViewTop in position One
@@ -353,13 +332,9 @@ UINavigationControllerDelegate {
         stackViewBottom.addArrangedSubview(createButtons(button: 3)) // adds the button to the stackViewBottom in position Three
         stackViewBottom.addArrangedSubview(createButtons(button: 4)) // adds the button to the stackViewBottom in position Four
         
-        
-        
     }
     
-    
-    
-    fileprivate func resetStackViewFrame() { // reset the stackView content to none
+    func resetStackViewFrame() { // reset the stackView content to none
         
         stackViewTop.subviews.forEach { (item) in // remove the views from stackViewTop
             stackViewTop.removeArrangedSubview(item)
@@ -370,7 +345,7 @@ UINavigationControllerDelegate {
             item.removeFromSuperview()
         }
     }
-    fileprivate func resetStackViewButton() { // reset the stackView content to none
+    func resetStackViewButton() { // reset the stackView content to none
         
         stackViewButtons.subviews.forEach { (item) in // remove the views from stackViewButtons
             item.removeFromSuperview()
@@ -380,7 +355,7 @@ UINavigationControllerDelegate {
     
     // Mark: Frame configuration
     
-    func whichFrame(frame: frameState) {
+    fileprivate func whichFrame(frame: frameState) {
         
         resetStackViewFrame()
         resetStackViewButton()
@@ -403,54 +378,13 @@ UINavigationControllerDelegate {
             gesture.direction = .left                    // set the gesture direction to left handling
             swipeToShare.text = "Swipe left to share"    // set the title to Swipe left to share
             
-            
         }
         else {
             gesture.direction = .up                      // set the gesture direction to up handling
             swipeToShare.text = "Swipe up to share"      // set the title to Swipe up to share
             
         }
-        //viewGeneral.fadeOut()
         viewGeneral.fadeIn()
     }
     
 }
-
-
-//extension UIView {
-//    
-//    // Using a function since `var image` might conflict with an existing variable
-//    // (like on `UIImageView`)
-//    func asImage() -> UIImage {
-//        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-//        return renderer.image { rendererContext in
-//            layer.render(in: rendererContext.cgContext)
-//        }
-//    }
-//}
-
-//extension UIView {
-//
-//    func fadeIn(_ duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
-//        self.alpha = 0
-//        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
-//            self.alpha = 1.0
-//        }, completion: completion)  }
-//
-////    func fadeOut(_ duration: TimeInterval = 0.5, delay: TimeInterval = 1.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
-////        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
-////            self.alpha = 0.0
-////        }, completion: completion)
-////
-////    }
-//}
-//extension ViewController: UIGestureRecognizerDelegate {
-//    
-//}
-
-//enum frameState {
-//    
-//    case twoTwo, largeTwo, twoLarge
-//    
-//}
-
