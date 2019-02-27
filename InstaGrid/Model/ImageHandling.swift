@@ -25,7 +25,5 @@ class ImageHandling{
         
         buttonsImageArray[endImage] = firstImage // switch
         buttonsImageArray[startImage] = lastImage // switch
-        
-        
     }
 }

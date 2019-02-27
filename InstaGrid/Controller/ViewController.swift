@@ -289,7 +289,7 @@ UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-    }
+}
     
     @objc func imagePickerController(_ picker: UIImagePickerController,
                                      didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
@@ -297,7 +297,7 @@ UINavigationControllerDelegate {
         if let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage { // if the chosen image is modified
             imageHandling.buttonsImageArray[currentTag - 1] = chosenImage
         }
-        else if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage { // if the chosen image is the opriginal one
+        else if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage { // if the chosen image is the original one
             imageHandling.buttonsImageArray[currentTag - 1] = chosenImage
         }
         
