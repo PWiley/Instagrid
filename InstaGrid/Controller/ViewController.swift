@@ -197,8 +197,8 @@ UINavigationControllerDelegate {
         return hitView
     }
     
-    func whichView(_ view: UIView) -> Int {   /* method checks the view touched and returns an int corresponding to
-         the index in buttonsImageArray */
+    func whichView(_ view: UIView) -> Int {   /* method checks the view touched and returns an
+                                                int  corresponding to the index in buttonsImageArray */
         switch view {
         case stackViewTop.viewWithTag(1): // case the first buttons image is selected
             return 0
@@ -212,8 +212,7 @@ UINavigationControllerDelegate {
         case stackViewBottom.viewWithTag(4): // case the fourth buttons image is selected
             return 3
             
-        default:
-            //            return "other view"
+        default:    //            return "other view"
             return 4
         }
     }
@@ -254,7 +253,7 @@ UINavigationControllerDelegate {
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 3))
         
     }
-    func setViewTwoLarge() {
+    func setViewTwoLarge() { // displays frame two smalls and Large
         
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 1))
         let buttonSelected = createViewButtons(buttonChoice: 2)
@@ -264,7 +263,7 @@ UINavigationControllerDelegate {
         
     }
     
-    func setViewTwoTwo() {
+    func setViewTwoTwo() { // displays frame two smalls and two smalls
         
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 1))
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 2))
