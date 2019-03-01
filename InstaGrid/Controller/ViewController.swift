@@ -68,9 +68,6 @@ UINavigationControllerDelegate {
         
         whichFrame(frame: .twoLarge) // calls whichFrame method and sets the frame
         
-        //        var image = ImageHandling()
-        //        image.image = #imageLiteral(resourceName: "Icon")
-        
     }
     
     
@@ -80,10 +77,11 @@ UINavigationControllerDelegate {
     }
     
     
-    //Mark: - Display
-    
+   
+    //MARK: - Actions
+  
     @IBAction func buttonViewPressed(_ sender: UIButton!) {  /* method handling the pressed button
-                                                                changing the frame depending on the frame choose */
+         changing the frame depending on the frame choose */
         if sender.tag == 1 {    /* frame largeTwo   stackViewTop composed by a large image/ stackViewBottom composed by two small images */
             whichFrame(frame: .largeTwo) // set the frame to the expected frame(Largetwo)
             frameDisplay.stateFrame = .largeTwo // memorised the state of the frame to LargeTwo
@@ -98,9 +96,7 @@ UINavigationControllerDelegate {
         }
     }
     
-    //MARK: - Actions
-    
-    //MARK: - Add Images
+    // Add Images
     
     @objc func buttonAddImagePressed(sender: UIButton!) { // add image in the button position
         
@@ -109,7 +105,7 @@ UINavigationControllerDelegate {
         
     }
     
-    //MARK: - Share Frame
+    // Share Frame
     
     @objc func shareFrame() { // method manage the share of the frame
         let activityViewController = UIActivityViewController(activityItems: [viewGeneral.asImage()], applicationActivities:nil) // create the activityViewController which take via viewGeneral.asImage() a picture of the viewGeneral
@@ -117,7 +113,7 @@ UINavigationControllerDelegate {
     }
     
     
-    //MARK: - Switch Images
+    // Switch Images
     
     @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {   // handle the Pan Gesture for the swipe of image
         switch recognizer.state {
@@ -181,8 +177,7 @@ UINavigationControllerDelegate {
             
         }
     }
-    
-    
+   
     func analyze(recognizer: UIPanGestureRecognizer) -> UIView? { // handles the view selected by the touch action
         let touchPoint = recognizer.location(in: recognizer.view) // declaration of the touchPoint, value for having the view where the touchPoint is placed
         
@@ -217,6 +212,44 @@ UINavigationControllerDelegate {
         }
     }
     
+   
+    // MARK: UIImagePickerController
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController,
+                                     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        
+        if let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage { // if the chosen image is modified
+            imageHandling.buttonsImageArray[currentTag - 1] = chosenImage
+        }
+        else if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage { // if the chosen image is the original one
+            imageHandling.buttonsImageArray[currentTag - 1] = chosenImage
+        }
+        
+        whichFrame(frame: frameDisplay.stateFrame)
+        dismiss(animated:true, completion: nil) //5
+        
+    }
+    
+    func setUIImagePickerController() {
+        let picker = UIImagePickerController() // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        picker.delegate = self // Make sure ViewController is notified when the user picks an image.
+        picker.allowsEditing = true // allows not the editing access to the picker
+        picker.sourceType = .photoLibrary // declares the type of the source // Only allow photos to be picked, not taken.
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        picker.modalPresentationStyle = UIModalPresentationStyle.currentContext // allows the landscape view
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+}
+    
+    
+    
+    // MARK: - Frames handling
+    
+    // MARK: Buttons Creation
+    
     func createButtons(button number: Int) -> UIButton { // creates four buttons from tag 0 - 3
         
         let button = BounceButton() // creates an instance of BounceButton
@@ -244,6 +277,8 @@ UINavigationControllerDelegate {
         return button
     }
     
+    // MARK: Buttons StackView Handling
+    
     func setViewLargeTwo() { // displays frame Large and two smalls
         
         let buttonSelected = createViewButtons(buttonChoice: 1)
@@ -253,6 +288,7 @@ UINavigationControllerDelegate {
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 3))
         
     }
+    
     func setViewTwoLarge() { // displays frame two smalls and Large
         
         stackViewButtons.addArrangedSubview(createViewButtons(buttonChoice: 1))
@@ -274,38 +310,7 @@ UINavigationControllerDelegate {
     }
     
     
-    //MARK: UIImagePickerController
-    
-    func setUIImagePickerController() {
-        let picker = UIImagePickerController() // UIImagePickerController is a view controller that lets a user pick media from their photo library.
-        picker.delegate = self // Make sure ViewController is notified when the user picks an image.
-        picker.allowsEditing = true // allows not the editing access to the picker
-        picker.sourceType = .photoLibrary // declares the type of the source // Only allow photos to be picked, not taken.
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        picker.modalPresentationStyle = UIModalPresentationStyle.currentContext // allows the landscape view
-        present(picker, animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-}
-    
-    @objc func imagePickerController(_ picker: UIImagePickerController,
-                                     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-        
-        if let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage { // if the chosen image is modified
-            imageHandling.buttonsImageArray[currentTag - 1] = chosenImage
-        }
-        else if let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage { // if the chosen image is the original one
-            imageHandling.buttonsImageArray[currentTag - 1] = chosenImage
-        }
-        
-        whichFrame(frame: frameDisplay.stateFrame)
-        dismiss(animated:true, completion: nil) //5
-        
-    }
-    
-    //MARK: StackView handling
+    // MARK: StackView Frame Handling
    
     func setStackViewLargeTwo() {      // call resetStackView method
        
@@ -344,12 +349,14 @@ UINavigationControllerDelegate {
             item.removeFromSuperview()
         }
     }
+    
     func resetStackViewButton() { // reset the stackView content to none
         
         stackViewButtons.subviews.forEach { (item) in // remove the views from stackViewButtons
             item.removeFromSuperview()
         }
     }
+    
     
     
     // Mark: Frame configuration
