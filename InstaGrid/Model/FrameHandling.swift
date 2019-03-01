@@ -17,7 +17,7 @@ var stateFrame = frameState.twoLarge                     /* declaration stateFra
 }
 
 
-enum frameState {
+enum frameState {   // enumeration for the different frames
     
     case twoTwo, largeTwo, twoLarge
     
