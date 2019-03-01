@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class ImageHandling{
+class ImageHandling {
     
     
     var buttonsFrameArray = [#imageLiteral(resourceName: "Layout 1"), #imageLiteral(resourceName: "Layout 2.png"), #imageLiteral(resourceName: "Layout 3")]                     // declaration array buttonsFrameArray / initialised with the three different images
