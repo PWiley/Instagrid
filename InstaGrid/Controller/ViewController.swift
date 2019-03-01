@@ -41,22 +41,7 @@ UINavigationControllerDelegate {
             view.addSubview(dragView)
         }
     }
-    
-    
-    // regarder le code
-    // model: créer un ensemble d'images didset tableau
-    // animation UIView.animate max 500 ms
-    // commenter
-    // differentes images,
-    // presentation powerpoint/présentation rapport
-    // gerer les views autres que Image 1, 2, 3, 4
-    // ne pas drager si autres vues que 1,2,3,4
-    // mettre inverseImage ds le model
-    // mettre enum frame ds le model
-    
-    
-    
-    
+   
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -70,14 +55,10 @@ UINavigationControllerDelegate {
         
     }
     
-    
-    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         whichOrientation()
     }
     
-    
-   
     //MARK: - Actions
   
     @IBAction func buttonViewPressed(_ sender: UIButton!) {  /* method handling the pressed button
@@ -245,7 +226,6 @@ UINavigationControllerDelegate {
 }
     
     
-    
     // MARK: - Frames handling
     
     // MARK: Buttons Creation
@@ -356,7 +336,6 @@ UINavigationControllerDelegate {
             item.removeFromSuperview()
         }
     }
-    
     
     
     // Mark: Frame configuration
