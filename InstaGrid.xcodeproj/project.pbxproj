@@ -77,8 +77,8 @@
 		DACEED3921C2B5C100770E81 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DACEED2921C2B5AF00770E81 /* ViewController.swift */,
 				DA343535221CB5110050B9D4 /* BounceButton.swift */,
+				DACEED2921C2B5AF00770E81 /* ViewController.swift */,
 				DA2590E82223E9DE00853CA2 /* Extensions.swift */,
 			);
 			path = Controller;
