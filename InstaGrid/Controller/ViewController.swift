@@ -86,26 +86,24 @@ UINavigationControllerDelegate {
         
     }
     
-    // Share Frame
+    //MARK: -Share Frame
     
     fileprivate func activityViewController() {
         // method manage the share of the frame
         
-        
-        
-        
         let activityViewController = UIActivityViewController(activityItems: [viewGeneral.asImage()], applicationActivities:nil) // create the activityViewController which take via viewGeneral.asImage() a picture of the viewGeneral
         
-        if(UIDevice.current.orientation.isPortrait){
-            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
-                self.viewGeneral.transform = .identity
-            }, completion:nil)
-        } else {
-            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
-                self.viewGeneral.transform = .identity
-            }, completion:nil)
+        activityViewController.completionWithItemsHandler = { activity, success, items, error in
+            if(UIDevice.current.orientation.isPortrait){ // test the iphone orientation for the effect direction UP
+                UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+                    self.viewGeneral.transform = .identity // will come back to the original position of viewGeneral
+                }, completion:nil)
+            } else {
+                UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+                    self.viewGeneral.transform = .identity // will come back to the original position of viewGeneral
+                }, completion:nil)
+            }
         }
-        
         present(activityViewController, animated: true,completion: nil)
         
     }
