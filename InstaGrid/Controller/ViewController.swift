@@ -95,11 +95,11 @@ UINavigationControllerDelegate {
         
         activityViewController.completionWithItemsHandler = { activity, success, items, error in
             if(UIDevice.current.orientation.isPortrait){ // test the iphone orientation for the effect direction UP
-                UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.3, options: [], animations: {
                     self.viewGeneral.transform = .identity // will come back to the original position of viewGeneral
                 }, completion:nil)
             } else {
-                UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.3, options: [], animations: {
                     self.viewGeneral.transform = .identity // will come back to the original position of viewGeneral
                 }, completion:nil)
             }
