@@ -88,9 +88,43 @@ UINavigationControllerDelegate {
     
     // Share Frame
     
-    @objc func shareFrame() { // method manage the share of the frame
+    fileprivate func activityViewController() {
+        // method manage the share of the frame
+        
+        
+        
+        
         let activityViewController = UIActivityViewController(activityItems: [viewGeneral.asImage()], applicationActivities:nil) // create the activityViewController which take via viewGeneral.asImage() a picture of the viewGeneral
-        present(activityViewController, animated: true,completion: nil) // present the activityViewController
+        
+        if(UIDevice.current.orientation.isPortrait){
+            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+                self.viewGeneral.transform = .identity
+            }, completion:nil)
+        } else {
+            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+                self.viewGeneral.transform = .identity
+            }, completion:nil)
+        }
+        
+        present(activityViewController, animated: true,completion: nil)
+        
+    }
+    
+    @objc func shareFrame(_ sender:UISwipeGestureRecognizer) {
+        
+        if gesture.direction == .left {
+          
+        self.viewGeneral.viewGeneralSwipeLeft()
+        self.activityViewController() // present the activityViewController
+            
+        } else {
+          
+        self.viewGeneral.viewGeneralSwipeUp()
+        self.activityViewController() // present the activityViewController
+        }
+        
+        
+        
     }
     
     
@@ -371,5 +405,6 @@ UINavigationControllerDelegate {
         }
         viewGeneral.fadeIn()
     }
+    
     
 }

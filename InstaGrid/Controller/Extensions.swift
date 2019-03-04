@@ -26,5 +26,17 @@ extension UIView {
             layer.render(in: rendererContext.cgContext)
         }
     }
+    // MARK: Animation functions
+    func viewGeneralSwipeUp() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.transform = CGAffineTransform(translationX: 0, y: -self.frame.size.height * 2) }, completion : nil)
+        
+    }
+    
+    func viewGeneralSwipeLeft() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.transform = CGAffineTransform(translationX: -self.frame.size.width * 2, y: 0) }, completion : nil)
+        
+    }
 }
 
